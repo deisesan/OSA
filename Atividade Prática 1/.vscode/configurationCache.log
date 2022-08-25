@@ -1,1 +1,1 @@
-{"buildTargets":["all","clean","exe","funcoes.o","main.exe","main.o","run"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}
+{"buildTargets":["all","clean","exe","funcoes.o","main.exe","main.o","os.o","run"],"launchTargets":[],"customConfigurationProvider":{"workspaceBrowse":{"browsePath":[],"compilerArgs":[]},"fileIndex":[]}}

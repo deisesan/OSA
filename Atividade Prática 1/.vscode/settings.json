@@ -2,6 +2,7 @@
     "makefile.extensionOutputFolder": "./.vscode",
     "files.associations": {
         "*.s": "gas",
-        "xstring": "cpp"
+        "xstring": "cpp",
+        "istream": "cpp"
     }
 }
