@@ -1,5 +1,5 @@
 MAIN = main
-OBJECTS	= $(MAIN).o funcoes.o
+OBJECTS	= $(MAIN).o funcoes.o dados.o
 FLAGS = -Wall -Wextra -std=c++17 -pedantic-errors
 MATH = -lm
 DEBUG = -g

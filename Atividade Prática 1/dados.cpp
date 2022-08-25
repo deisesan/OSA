@@ -1,5 +1,9 @@
 #include "dados.h"
 
+Dados::Dados()
+{
+}
+
 string Dados::getNome()
 {
     return nome;
@@ -38,4 +42,8 @@ void Dados::setTelefone(string telefone)
 void Dados::setDtNascimento(string dtNascimento)
 {
     this->dtNascimento = dtNascimento;
+}
+
+Dados::~Dados()
+{
 }

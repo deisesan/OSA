@@ -1,11 +1,7 @@
 #ifndef DADOS_H
 #define DADOS_H
 
-#include <iostream>
-#include <fstream>
-#include <string>
-
-using namespace std;
+#include "biblioteca.h"
 
 class Dados
 {

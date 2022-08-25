@@ -1,13 +1,13 @@
+#include "biblioteca.h"
 #include "funcoes.h"
-#include <iostream>
-using namespace std;
 
 int main()
 {
     string nomeArquivo = "Dados.txt";
 
-    leituraArquivo(nomeArquivo);
-    escritaArquivo(nomeArquivo);
+    Arquivo(nomeArquivo);
 
     cout << "Tudo OK ate aqui";
+
+    return 0;
 }

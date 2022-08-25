@@ -1,13 +1,11 @@
 #ifndef FUNCOES_H
 #define FUNCOES_H
 
-#include <iostream>
-#include <fstream>
-#include <string>
+#include "biblioteca.h"
+#include "dados.h"
 
 using namespace std;
 
-void leituraArquivo(string nomeArquivo);
-void escritaArquivo(string nomeArquivo);
+void Arquivo(string nomeArquivo);
 
 #endif

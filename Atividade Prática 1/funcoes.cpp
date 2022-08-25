@@ -1,8 +1,9 @@
 #include "funcoes.h"
 
-void leituraArquivo(string nomeArquivo)
+void Arquivo(string nomeArquivo)
 {
-    ifstream Arquivo(nomeArquivo);
+
+    Dados dados;
     string line;
     string nome;
     string sobrenome;
@@ -10,9 +11,13 @@ void leituraArquivo(string nomeArquivo)
     string dtNascimento;
     int i = 0;
 
-    while (!Arquivo.eof())
+    ifstream Input(nomeArquivo);
+    nomeArquivo.replace(nomeArquivo.find(".txt"), 4, "Saida.txt");
+    ofstream Output(nomeArquivo);
+
+    while (!Input.eof())
     {
-        getline(Arquivo, line, '\0');
+        getline(Input, line, '\0');
 
         // Leitura de Nome
         while (line[i] != '|')
@@ -20,6 +25,7 @@ void leituraArquivo(string nomeArquivo)
             nome += line[i];
             ++i;
         }
+        dados.setNome(nome);
         ++i;
 
         // Leitura de Sobrenome
@@ -28,6 +34,7 @@ void leituraArquivo(string nomeArquivo)
             sobrenome += line[i];
             ++i;
         }
+        dados.setSobrenome(sobrenome);
         ++i;
 
         // Leitura de Telefone
@@ -36,6 +43,7 @@ void leituraArquivo(string nomeArquivo)
             telefone += line[i];
             ++i;
         }
+        dados.setTelefone(telefone);
         ++i;
 
         // Leitura de Data de Nascimento
@@ -44,12 +52,20 @@ void leituraArquivo(string nomeArquivo)
             dtNascimento += line[i];
             ++i;
         }
+        dados.setDtNascimento(dtNascimento);
         ++i;
 
-        cout << nome << "|" << sobrenome << "|" << telefone << "|" << dtNascimento << endl;
-    }
-}
+        Output
+            << dados.getNome() << "|"
+            << dados.getSobrenome() << "|"
+            << dados.getTelefone() << "|"
+            << dados.getDtNascimento() << endl;
 
-void escritaArquivo(string nomeArquivo)
-{
+        i = 0;
+        nome.clear();
+        sobrenome.clear();
+        telefone.clear();
+        dtNascimento.clear();
+        line.clear();
+    }
 }

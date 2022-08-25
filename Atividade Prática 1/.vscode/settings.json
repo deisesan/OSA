@@ -3,6 +3,7 @@
     "files.associations": {
         "*.s": "gas",
         "xstring": "cpp",
-        "istream": "cpp"
+        "istream": "cpp",
+        "iosfwd": "cpp"
     }
 }
