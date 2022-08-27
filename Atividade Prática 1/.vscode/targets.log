@@ -7,7 +7,7 @@ make.exe all --print-data-base --no-builtin-variables --no-builtin-rules --quest
 # There is NO WARRANTY, to the extent permitted by law.
  
 
-# Make data base, printed on Thu Aug 25 17:37:18 2022
+# Make data base, printed on Sat Aug 27 13:42:15 2022
 
 # Variables
 
@@ -30,47 +30,47 @@ HOMEDRIVE = C:
 # automatic
 ^D = $(patsubst %/,%,$(patsubst %\,%,$(dir $^)))
 # makefile
-CURDIR := d:/Faculdade/OSA/OSA/Atividade Pr�tica 1
+CURDIR := c:/Users/dayan/Documents/OSA/OSA/ 
+Atividade Pr�tica 1
 # default
 SHELL := sh.exe
 # environment
-WINDIR = C:\Windows
+WINDIR = C:\WINDOWS
 # environment
-VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"8e7a008e83c664b9876a8f72ff0490ae.pt-br","_translationsConfigFile":"C:\\Users\\deise\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\deise\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\deise\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"C:\\Users\\deise\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\corrupted.info","_languagePackSupport":true}
+VSCODE_NLS_CONFIG = {"locale":"pt-br","availableLanguages":{"*":"pt-br"},"_languagePackId":"8e7a008e83c664b9876a8f72ff0490ae.pt-br","_translationsConfigFile":"C:\\Users\\dayan\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\tcf.json","_cacheRoot":"C:\\Users\\dayan\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br","_resolvedLanguagePackCoreLocation":"C:\\Users\\dayan\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\e4503b30fc78200f846c62cf8091b76ff5547662","_corruptedFile":"C:\\Users\\dayan\\AppData\\Roaming\\Code\\clp\\8e7a008e83c664b9876a8f72ff0490ae.pt-br\\corrupted.info","_languagePackSupport":true}
 # environment
-ONEDRIVE = C:\Users\deise\OneDrive
+ONEDRIVE = C:\Users\dayan\OneDrive
 # environment
-PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC;.PY;.PYW
+PATHEXT = .COM;.EXE;.BAT;.CMD;.VBS;.VBE;.JS;.JSE;.WSF;.WSH;.MSC
 # makefile (from 'makefile', line 1)
 MAKEFILE_LIST :=  makefile
+# environment
+FPS_BROWSER_USER_PROFILE_STRING = Default
 # makefile (from 'makefile', line 5)
 DEBUG = -g
 # environment
-TMP = C:\Users\deise\AppData\Local\Temp
+TMP = C:\Users\dayan\AppData\Local\Temp
 # environment
 PROGRAMW6432 = C:\Program Files
 # environment
 PROGRAMDATA = C:\ProgramData
 # environment
-VSCODE_CWD = D:\Faculdade\OSA\OSA\Atividade Pr�tica 1
+VSCODE_CWD = C:\Users\dayan\AppData\Local\Programs\Microsoft VS Code
 # makefile (from 'makefile', line 4)
 MATH = -lm
 # environment
-PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Git\cmd;C:\Program Files\Java\jdk-11.0.15.1\bin;C:\Users\deise\AppData\Local\Microsoft\WindowsApps;C:\Users\deise\AppData\Roaming\npm;C:\Users\deise\AppData\Local\Programs\Microsoft VS Code\bin;C:\MinGW\bin;C:\Program Files\Java\jdk-11.0.15.1\bin;
+PATH = C:\Program Files\Common Files\Oracle\Java\javapath;C:\Program Files\Java\jdk-11.0.15\bin;C:\Program Files (x86)\Common Files\Oracle\Java\javapath;C:\ProgramData\Oracle\Java\javapath;C:\Program Files (x86)\Intel\iCLS Client\;C:\Program Files\Intel\iCLS Client\;C:\WINDOWS\system32;C:\WINDOWS;C:\WINDOWS\System32\Wbem;C:\WINDOWS\System32\WindowsPowerShell\v1.0\;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files\Intel\Intel(R) Management Engine Components\DAL;C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files\Intel\Intel(R) Management Engine Components\IPT;C:\Program Files (x86)\Windows Live\Shared;C:\WINDOWS\System32\OpenSSH\;C:\Program Files\nodejs\;C:\Program Files\Git\cmd;C:\Program Files\MySQL\MySQL Server 8.0\bin;C:\MinGW\bin;C:\Program Files\MySQL\MySQL Shell 8.0\bin\;C:\Users\dayan\AppData\Local\Microsoft\WindowsApps;C:\Users\dayan\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64\;C:\Users\dayan\AppData\Local\atom\bin;C:\Users\dayan\AppData\Local\Microsoft\WindowsApps;C:\Users\dayan\AppData\Roaming\npm;C:\Users\dayan\AppData\Local\GitHubDesktop\bin;C:\MinGW\bin;C:\Users\dayan\AppData\Local\Programs\Microsoft  
+VS Code\bin
 # environment
 COMMONPROGRAMW6432 = C:\Program Files\Common Files
 # environment
-CHOCOLATEYLASTPATHUPDATE = 133038583972674561
-# environment
 PROCESSOR_ARCHITECTURE = x86
 # environment
-USERPROFILE = C:\Users\deise
-# environment
-CHOCOLATEYINSTALL = C:\ProgramData\chocolatey
+USERPROFILE = C:\Users\dayan
 # environment
 ALLUSERSPROFILE = C:\ProgramData
 # environment
-NUMBER_OF_PROCESSORS = 12
+NUMBER_OF_PROCESSORS = 4
 # environment
 ELECTRON_RUN_AS_NODE = 1
 # default
@@ -78,9 +78,9 @@ ELECTRON_RUN_AS_NODE = 1
 # automatic
 %F = $(notdir $%)
 # environment
-CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_1868_UOLOVTAVYJOPQTLB
+CHROME_CRASHPAD_PIPE_NAME = \\.\pipe\crashpad_19936_KZXPIDKQKKTHDNHN
 # environment
-COMPUTERNAME = DESKTOP-PRRSRE9
+COMPUTERNAME = DESKTOP-T5SRK60
 # environment
 PROGRAMFILES = C:\Program Files (x86)
 # environment
@@ -88,25 +88,24 @@ DRIVERDATA = C:\Windows\System32\Drivers\DriverData
 # environment
 ORIGINAL_XDG_CURRENT_DESKTOP = undefined
 # environment
-USERNAME = deise
+USERNAME = dayan
 # environment
 PUBLIC = C:\Users\Public
 # environment
 VSCODE_AMD_ENTRYPOINT = vs/workbench/api/node/extensionHostProcess
 # environment
-VSCODE_CODE_CACHE_PATH = C:\Users\deise\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
-# environment
+VSCODE_CODE_CACHE_PATH = C:\Users\dayan\AppData\Roaming\Code\CachedData\e4503b30fc78200f846c62cf8091b76ff5547662
+# 
+ environment
 APPLICATION_INSIGHTS_NO_DIAGNOSTIC_CHANNEL = true
 # environment
 COMMONPROGRAMFILES = C:\Program Files (x86)\Common Files
 # environment
-LOGONSERVER = \\DESKTOP-PRRSRE9
-# environment
-ONEDRIVECONSUMER = C:\Users\deise\OneDrive
+LOGONSERVER = \\DESKTOP-T5SRK60
 # environment
 VSCODE_HANDLES_UNCAUGHT_ERRORS = true
 # environment
-USERDOMAIN = DESKTOP-PRRSRE9
+USERDOMAIN = DESKTOP-T5SRK60
 # environment
 MAKELEVEL := 0
 # default
@@ -116,7 +115,7 @@ MAKECMDGOALS := all
 # makefile (from 'makefile', line 6)
 CC = g++
 # environment
-JAVA_HOME = C:\Program Files\Java\jdk-11.0.15.1
+JAVA_HOME = C:\Program Files\Java\jdk-11.0.15
 # default
 MAKE_VERSION := 3.82.90
 # makefile
@@ -126,9 +125,9 @@ PROGRAMFILES(X86) = C:\Program Files (x86)
 # automatic
 %D = $(patsubst %/,%,$(patsubst %\,%,$(dir $%)))
 # environment
-LOCALAPPDATA = C:\Users\deise\AppData\Local
+LOCALAPPDATA = C:\Users\dayan\AppData\Local
 # environment
-PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\Windows\system32\WindowsPowerShell\v1.0\Modules
+PSMODULEPATH = C:\Program Files\WindowsPowerShell\Modules;C:\WINDOWS\system32\WindowsPowerShell\v1.0\Modules
 # default
 MAKE_COMMAND := make.exe
 # environment
@@ -138,13 +137,13 @@ PROCESSOR_ARCHITEW6432 = AMD64
 # automatic
 *F = $(notdir $*)
 # environment
-PROCESSOR_IDENTIFIER = AMD64 Family 23 Model 104 Stepping 1, AuthenticAMD
+PROCESSOR_IDENTIFIER = Intel64 Family 6 Model 142 Stepping 9, GenuineIntel
 # environment
 OS = Windows_NT
 # environment
-VSCODE_IPC_HOOK = \\.\pipe\040971c2b78d04bebb1c2f1518a8848e-1.70.2-main-sock
+VSCODE_IPC_HOOK = \\.\pipe\a3032d0a000102fa333f9bf6c0bb4644-1.70.2-main-sock
 # environment
-HOMEPATH = \Users\deise
+HOMEPATH = \Users\dayan
 # environment
 COMMONPROGRAMFILES(X86) = C:\Program Files (x86)\Common Files
 # environment
@@ -156,17 +155,18 @@ MFLAGS = -Rrqp
 # makefile (from 'makefile', line 1)
 MAIN = main
 # environment
-SYSTEMROOT = C:\Windows
+SYSTEMROOT = C:\WINDOWS
 # automatic
-+D = $(patsubst %/,%,$(patsubst %\,%,$(dir $+)))
++D = $(patsubst %/,%,$ 
+(patsubst %\,%,$(dir $+)))
 # automatic
 +F = $(notdir $+)
 # environment
-APPDATA = C:\Users\deise\AppData\Roaming
+APPDATA = C:\Users\dayan\AppData\Roaming
 # environment
-TEMP = C:\Users\deise\AppData\Local\Temp
+TEMP = C:\Users\dayan\AppData\Local\Temp
 # environment
-COMSPEC = C:\Windows\system32\cmd.exe
+COMSPEC = C:\WINDOWS\system32\cmd.exe
 # default
 MAKEFILES := 
 # automatic
@@ -184,7 +184,7 @@ SESSIONNAME = Console
 # makefile (from 'makefile', line 3)
 FLAGS = -Wall -Wextra -std=c++17 -pedantic-errors
 # environment
-PROCESSOR_REVISION = 6801
+PROCESSOR_REVISION = 8e09
 # default
 .INCLUDE_DIRS = C:/MinGW/include
 # default
@@ -194,39 +194,56 @@ OBJECTS = $(MAIN).o funcoes.o dados.o
 # environment
 LANG = C
 # environment
-PROCESSOR_LEVEL = 23
+PROCESSOR_LEVEL = 6
 # environment
-VSCODE_PID = 1868
+FPS_BROWSER_APP_PROFILE_STRING = Internet Explorer
 # environment
-USERDOMAIN_ROAMINGPROFILE = DESKTOP-PRRSRE9
+VSCODE_PID = 19936
+# environment
+USERDOMAIN_ROAMINGPROFILE = DESKTOP-T5SRK60
 # variable set hash-table stats:
-# Load=94/1024=9%, Rehash=0, Collisions=11/116=9%
+# Load=93/1024=9%, Rehash=0, Collisions=11/122=9%
 
 # Pattern-specific Variable Values
 
+ 
 # No pattern-specific variable values.
 
 # Directories
 
-# C:\Windows\System32\WindowsPowerShell\v1.0\ (key C:/Windows/System32/WindowsPowerShell/v1.0/, mtime 1633527567): 29 files, no impossibilities.
-# . (key d:/Faculdade/OSA/OSA/Atividade Pr�tica 1, mtime 1661437953): 16 files, no impossibilities.
-# C:\Python310\ (key C:/Python310/, mtime 1659386012): 18 files, no impossibilities.
-# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1659387603): 8 files, no impossibilities.
-# C:\Windows\System32\OpenSSH\: could not be stat'd.
-# C:\Python310\Scripts\ (key C:/Python310/Scripts/, mtime 1659386012): 5 files, no impossibilities.
-# C:\MinGW\bin (key C:/MinGW/bin, mtime 1660049161): 145 files, no impossibilities.
-# C:\ProgramData\chocolatey\bin (key C:/ProgramData/chocolatey/bin, mtime 1659384797): 11 files, no impossibilities.
-# C:\Windows (key C:/Windows, mtime 1660954123): 119 files, no impossibilities.
-# C:\Users\deise\AppData\Roaming\npm (key C:/Users/deise/AppData/Roaming/npm, mtime 1659384701): 2 files, no impossibilities.
-# C:\Windows\System32\Wbem (key C:/Windows/System32/Wbem, mtime 1660954124): 169 files, no impossibilities.
-# C:\Program Files\Java\jdk-11.0.15.1\bin (key C:/Program Files/Java/jdk-11.0.15.1/bin, mtime 1659702296): 124 files, no impossibilities.
-# C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1659702296): 6 files, no impossibilities.
-# C:\Users\deise\AppData\Local\Microsoft\WindowsApps (key C:/Users/deise/AppData/Local/Microsoft/WindowsApps, mtime 1661251533): 15 files, no impossibilities.
-# C:\Program Files\nodejs\ (key C:/Program Files/nodejs/, mtime 1659384711): 11 files, no impossibilities.
-# C:\Windows\system32 (key C:/Windows/system32, mtime 1661277841): 2905 files, no impossibilities.
-# C:\Users\deise\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/deise/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1661422889): 4 files, no impossibilities.
+# C:\ProgramData\Oracle\Java\javapath (key C:/ProgramData/Oracle/Java/javapath, mtime 1529176647): 5 files, no impossibilities.
+# C:\Program Files\MySQL\MySQL Server 8.0\bin (key C:/Program Files/MySQL/MySQL Server 8.0/bin, mtime 1650737789): 52 files, no impossibilities.
+# C:\WINDOWS\System32\WindowsPowerShell\v1.0\ (key C:/WINDOWS/System32/WindowsPowerShell/v1.0/, mtime 1606086805): 31 files, no impossibilities.
+# . (key c:/Users/dayan/Documents/OSA/OSA/Atividade Pr�tica 1, mtime 1661618466): 12 files, no impossibilities.
+# C:\Users\dayan\AppData\Roaming\npm (key C:/Users/dayan/AppData/Roaming/npm, mtime 1632088011): 2 files, no impossibilities.
+# C:\Program Files (x86)\Common Files\Oracle\Java\javapath (key C:/Program Files (x86)/Common Files/Oracle/Java/javapath, mtime 1658450067): 5 files, no impossibilities.
+# C:\Program Files\MySQL\MySQL Shell 8.0\bin\ (key C:/Program Files/MySQL/MySQL Shell 8.0/bin/, mtime 1650738554): 9 files, no impossibilities. 
 
-# 3587 files, no impossibilities in 17 directories.
+# C:\Program Files\Java\jdk-11.0.15\bin (key C:/Program Files/Java/jdk-11.0.15/bin, mtime 1660350399): 124 files, no impossibilities.
+# C:\WINDOWS\System32\OpenSSH\: could not be stat'd.
+# C:\Users\dayan\AppData\Local\Microsoft\WindowsApps (key C:/Users/dayan/AppData/Local/Microsoft/WindowsApps, mtime 1660772707): 17 files, no impossibilities.
+# C:\MinGW\bin (key C:/MinGW/bin, mtime 1660670991): 60 files, no impossibilities.
+# C:\Program Files\Intel\iCLS Client\ (key C:/Program Files/Intel/iCLS Client/, mt 
+ime 1500314069): 21 files, no impossibilities.
+# C:\Program Files\Intel\Intel(R) Management Engine Components\DAL (key C:/Program Files/Intel/Intel(R) Management Engine Components/DAL, mtime 1500314066): 4 files, no impossibilities.
+# C:\WINDOWS (key C:/WINDOWS, mtime 1660357529): 143 files, no impossibilities.
+# C:\Program Files\Intel\Intel(R) Management Engine Components\IPT (key C:/Program Files/Intel/Intel(R) Management Engine Components/IPT, mtime 1500314066): 5 files, no impossibilities.
+# C:\Users\dayan\AppData\Local\GitHubDesktop\bin (key C:/Users/dayan/AppData/Local/GitHubDesktop/bin, mtime 1645320276): 4 files, no impossibilities.
+# C:\Users\dayan\AppData\Local\Programs\Microsoft VS Code\bin (key C:/Users/dayan/AppData/Local/Programs/Microsoft VS Code/bin, mtime 1661462514): 4 files, no impossibilities.
+# C:\WINDOWS\System32\Wbem (key C:/WINDOWS/System32/Wbem, mtime 1658982496): 159 files, no impossibilities.
+# C:\Users\dayan\AppData\Local\Programs\MiKTeX 2.9\miktex\bin\x64\ (key C:/Users/dayan/AppD 
+ata/Local/Programs/MiKTeX 2.9/miktex/bin/x64/, mtime 1529897751): 596 files, no impossibilities.
+# C:\Program Files\Common Files\Oracle\Java\javapath (key C:/Program Files/Common Files/Oracle/Java/javapath, mtime 1660350472): 6 files, no impossibilities.
+# C:\Program Files\nodejs\ (key C:/Program Files/nodejs/, mtime 1632088510): 11 files, no impossibilities.
+# C:\WINDOWS\system32 (key C:/WINDOWS/system32, mtime 1660675036): 2953 files, no impossibilities.
+# C:\Program Files (x86)\Windows Live\Shared (key C:/Program Files (x86)/Windows Live/Shared, mtime 1514314841): 23 files, no impossibilities.
+# C:\Program Files (x86)\Intel\iCLS Client\ (key C:/Program Files (x86)/Intel/iCLS Client/, mtime 1500314069): 19 files, no impossibilities.
+# C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\DAL (key C:/Program Files (x86)/Intel/Intel(R) Management Engine Components/DAL, mtime 1500314066): 10 files, no impossibilities.
+# C:\Program Files (x86)\Intel\Intel(R) Management Engine Components\IPT (key C:/Program Files (x86)/Intel/Intel(R) Management Engine Components/IPT, mtime 1500314066): 6 files, no impossibilities.
+# C:\Program Files\Git\cmd (key C:/Program Files/Git/cmd, mtime 1645320146): 8 files, no impossibilities.
+# C:\Users\dayan\AppData\Local\atom\bin: could not be stat'd.
+
+# 4289 files, no impossibilities in 28 directories.
 
 # Implicit Rules
 
@@ -246,55 +263,57 @@ all: main.exe
 #  Implicit rule search has been done.
 #  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 
 # Not a target:
 dados.h:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-25 10:59:51
-#  File has been updated.
-#  Successfully updated.
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not been updated.
 
 main.exe: main.o funcoes.o dados.o
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 11:32:23
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# variable set hash-table stats:
+# Load=0/32=0%, Rehash=0, Collisions=0/7=0%
 #  recipe to execute (from 'makefile', line 11):
 	$(CC) $(OBJECTS) -o $(MAIN).exe $(FLAGS)
 
 # Not a target:
 dados.cpp:
-#  Implicit rule search has been done.
-#  Last modified 2022-08-25 10:57:32
-#  File has been updated.
-#  Successfully updated.
-
-# Not a target:
-.SUFFIXES:
 #  Implicit rule search has not been done.
 #  Modification time never checked.
 #  File has not been updated.
 
 # Not a target:
+.SUFFIXES:
+#  Implicit rule search has not been done.
+#  Modification time never checked.
+#  File has not  
+been updated.
+
+# Not a target:
 makefile:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 11:14:09
+#  Last modified 2022-08-27 13:41:06
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 main.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 11:18:13
+#  Last modified 2022-08-27 13:41:06
 #  File has been updated.
 #  Successfully updated.
 
 funcoes.o: funcoes.cpp funcoes.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 11:32:23
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'makefile', line 17):
 	$(CC) -c funcoes.cpp -o funcoes.o $(FLAGS)
 
@@ -321,50 +340,71 @@ clean:
 
 dados.o: dados.cpp dados.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 11:28:13
-#  File has been updated.
-#  Successfully updated.
+#  Modification time never checked.
+#  File has not been updated.
 #  recipe to execute (from 'makefile', line 20):
 	$(CC) -c dados.cpp -o dados.o $(FLAGS)
 
 main.o: main.cpp funcoes.cpp funcoes.h
 #  Implicit rule search has not been done.
-#  Last modified 2022-08-25 11:32:22
+#  Implicit/static pattern stem: ''
+#  File does not exist.
 #  File has been updated.
-#  Successfully updated.
+#  Needs to be updated (-q is set).
+# automatic
+# @ := main 
+.o
+# automatic
+# % := 
+# automatic
+# * := 
+# automatic
+# + := main.cpp funcoes.cpp funcoes.h
+# automatic
+# | := 
+# automatic
+# < := main.cpp
+# automatic
+# ^ := main.cpp funcoes.cpp funcoes.h
+# automatic
+# ? := main.cpp funcoes.cpp funcoes.h
+# variable set hash-table stats:
+# Load=8/32=25%, Rehash=0, Collisions=1/15=7%
 #  recipe to execute (from 'makefile', line 14):
 	$(CC) -c $(MAIN).cpp -o $(MAIN).o $(FLAGS)
 
 # Not a target:
 funcoes.h:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 11:16:24
+#  Last modified 2022-08-27 13:4 
+1:06
 #  File has been updated.
 #  Successfully updated.
 
 # Not a target:
 funcoes.cpp:
 #  Implicit rule search has been done.
-#  Last modified 2022-08-25 11:32:20
+#  Last modified 2022-08-27 13:41:06
 #  File has been updated.
 #  Successfully updated.
 
 # files hash-table stats:
-# Load=16/1024=2%, Rehash=0, Collisions=0/43=0%
+# Load=16/1024=2%, Rehash=0, Collisions=0/44=0%
 # VPATH Search Paths
 
 # No 'vpath' search paths.
 
 # No general ('VPATH' variable) search path.
 
-# strcache buffers: 7 (6) / strings = 3555 / storage = 54153 B / avg = 15 B
-# current buf: size = 8174 B / used = 5144 B / count = 312 / avg = 16 B
-# other used: total = 45979 B / count = 3243 / avg = 14 B
-# other free: total = 35 B / max = 11 B / min = 1 B / avg = 5 B
+# strcache buffers: 8 (7) / strings = 4161 / storage = 63298 B / avg = 15 B
+# current buf: size = 8174 B / used = 6120 B / count 
+ = 385 / avg = 15 B
+# other used: total = 55124 B / count = 3776 / avg = 14 B
+# other free: total = 40 B / max = 10 B / min = 1 B / avg = 5 B
 
-# strcache performance: lookups = 3638 / hit rate = 2%
+# strcache performance: lookups = 4352 / hit rate = 4%
 # hash-table stats:
-# Load=3555/8192=43%, Rehash=0, Collisions=1248/3638=34%
-# Finished Make data base on Thu Aug 25 17:37:18 2022
+# Load=4161/8192=51%, Rehash=0, Collisions=1843/4352=42%
+# Finished Make data base on Sat Aug 27 13:42:15 2022
 
  
