@@ -6,6 +6,7 @@ int main()
     string nomeArquivo = "Dados.txt";
 
     Arquivo(nomeArquivo);
+    ArquivoFixo(nomeArquivo);
 
     cout << "Tudo OK ate aqui";
 

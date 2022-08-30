@@ -22,12 +22,10 @@ void Arquivo(string nomeArquivo)
 
         while (!Input.eof())
         {
-
             getline(Input, line);
 
             if (line != "")
             {
-
                 // Leitura de Nome
                 while (line[i] != '|')
                 {
@@ -78,7 +76,7 @@ void Arquivo(string nomeArquivo)
                             << dados.getTelefone().size()
                             << dados.getTelefone()
                             << dados.getDtNascimento().size()
-                            << dados.getDtNascimento();
+                            << dados.getDtNascimento() << endl;
                 }
                 else
                 {
@@ -96,7 +94,7 @@ void Arquivo(string nomeArquivo)
                         << dados.getTelefone().size()
                         << dados.getTelefone()
                         << dados.getDtNascimento().size()
-                        << dados.getDtNascimento();
+                        << dados.getDtNascimento() << endl;
                 }
 
                 if (cont != 0)
@@ -123,4 +121,74 @@ void Arquivo(string nomeArquivo)
     Output1.close();
     Output2.close();
     Output3.close();
+}
+
+void ArquivoFixo(string nomeArquivo)
+{
+    DadosFixos dadosfixos;
+    string line;
+    int i = 0, j = 0;
+    ofstream Output4;
+
+    Output4.open("TamanhoFixo.dat", ios::out | ios::binary);
+
+    if (Output4.good())
+    {
+        ifstream Input(nomeArquivo);
+
+        while (!Input.eof())
+        {
+            getline(Input, line);
+
+            if (line != "")
+            {
+                // Leitura de Nome
+                while (line[i] != '|')
+                {
+                    dadosfixos.nome[j] = line[i];
+                    ++i;
+                    ++j;
+                }
+                ++i;
+                j = 0;
+
+                // Leitura de Sobrenome
+                while (line[i] != '|')
+                {
+                    dadosfixos.sobrenome[j] = line[i];
+                    ++i;
+                    ++j;
+                }
+                ++i;
+                j = 0;
+
+                // Leitura de Telefone
+                while (line[i] != '|')
+                {
+                    dadosfixos.telefone[j] = line[i];
+                    ++i;
+                    ++j;
+                }
+                ++i;
+                j = 0;
+
+                // Leitura de Data de Nascimento
+                while (line[i] != '\0')
+                {
+                    dadosfixos.dtNascimento[j] = line[i];
+                    ++i;
+                    ++j;
+                }
+                ++i;
+                j = 0;
+
+                Output4.write(reinterpret_cast<char *>(&dadosfixos), sizeof(struct DadosFixos));
+            }
+
+            i = 0;
+            line.clear();
+        }
+    }
+
+    Output4.close();
 }

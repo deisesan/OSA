@@ -25,6 +25,7 @@ clean:
 	del /q /f IndicacaoDeTamanhoRegistro.txt
 	del /q /f IndicacaoDeTamanhoCampo.txt
 	del /q /f SeparadosPorTags.txt
+	del /q /f TamanhoFixo.dat
 
 run: all
 	./$(MAIN).exe
