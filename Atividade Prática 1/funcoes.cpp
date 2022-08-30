@@ -10,12 +10,13 @@ void Arquivo(string nomeArquivo)
     string telefone;
     string dtNascimento;
     int i = 0, cont = 0;
-    ofstream Output1, Output2;
+    ofstream Output1, Output2, Output3;
 
-    Output1.open("ComIndicacaoDeTamanho.txt");
-    Output2.open("SeparadosPorTags.txt");
+    Output1.open("IndicacaoDeTamanhoRegistro.txt");
+    Output2.open("IndicacaoDeTamanhoCampo.txt");
+    Output3.open("SeparadosPorTags.txt");
 
-    if (Output1.good() && Output2.good())
+    if (Output1.good() && Output2.good() && Output3.good())
     {
         ifstream Input(nomeArquivo);
 
@@ -70,6 +71,14 @@ void Arquivo(string nomeArquivo)
                             << dados.getSobrenome() << "|"
                             << dados.getTelefone() << "|"
                             << dados.getDtNascimento() << endl;
+                    Output2 << dados.getNome().size()
+                            << dados.getNome()
+                            << dados.getSobrenome().size()
+                            << dados.getSobrenome()
+                            << dados.getTelefone().size()
+                            << dados.getTelefone()
+                            << dados.getDtNascimento().size()
+                            << dados.getDtNascimento();
                 }
                 else
                 {
@@ -79,12 +88,20 @@ void Arquivo(string nomeArquivo)
                         << dados.getSobrenome() << "|"
                         << dados.getTelefone() << "|"
                         << dados.getDtNascimento() << endl;
+                    Output2
+                        << dados.getNome().size()
+                        << dados.getNome()
+                        << dados.getSobrenome().size()
+                        << dados.getSobrenome()
+                        << dados.getTelefone().size()
+                        << dados.getTelefone()
+                        << dados.getDtNascimento().size()
+                        << dados.getDtNascimento();
                 }
 
                 if (cont != 0)
                 {
-
-                    Output2
+                    Output3
                         << "Nome=" << dados.getNome() << "|"
                         << "Sobrenome=" << dados.getSobrenome() << "|"
                         << "Telefone=" << dados.getTelefone() << "|"
@@ -93,6 +110,7 @@ void Arquivo(string nomeArquivo)
 
                 cont++;
             }
+
             i = 0;
             nome.clear();
             sobrenome.clear();
@@ -104,4 +122,5 @@ void Arquivo(string nomeArquivo)
 
     Output1.close();
     Output2.close();
+    Output3.close();
 }

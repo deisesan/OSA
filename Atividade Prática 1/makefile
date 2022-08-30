@@ -22,6 +22,9 @@ dados.o: dados.cpp dados.h
 clean:
 	del /q /f $(OBJECTS)
 	del /q /f *.exe
+	del /q /f IndicacaoDeTamanhoRegistro.txt
+	del /q /f IndicacaoDeTamanhoCampo.txt
+	del /q /f SeparadosPorTags.txt
 
 run: all
 	./$(MAIN).exe
