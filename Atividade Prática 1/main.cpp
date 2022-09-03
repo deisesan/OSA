@@ -7,8 +7,6 @@ int main()
 
     Arquivo(nomeArquivo);
     ArquivoFixo(nomeArquivo);
-
-    cout << "Tudo OK ate aqui";
-
+   
     return 0;
 }

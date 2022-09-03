@@ -9,14 +9,15 @@ void Arquivo(string nomeArquivo)
     string sobrenome;
     string telefone;
     string dtNascimento;
-    int i = 0, cont = 0;
-    ofstream Output1, Output2, Output3;
+    int i = 0, cont = 0, tam;
+    ofstream Output1, Output2, Output3, Output4;
 
     Output1.open("IndicacaoDeTamanhoRegistro.txt");
     Output2.open("IndicacaoDeTamanhoCampo.txt");
     Output3.open("SeparadosPorTags.txt");
+    Output4.open("IndicacaoDeTamanhoCampo.dat", ios::out | ios::binary);
 
-    if (Output1.good() && Output2.good() && Output3.good())
+    if (Output1.good() && Output2.good() && Output3.good() && Output4.good())
     {
         ifstream Input(nomeArquivo);
 
@@ -62,32 +63,14 @@ void Arquivo(string nomeArquivo)
                 dados.setDtNascimento(dtNascimento);
                 ++i;
 
-                if (cont == 0)
-                {
-                    Output1 << "Tamanho de Registro|"
-                            << dados.getNome() << "|"
-                            << dados.getSobrenome() << "|"
-                            << dados.getTelefone() << "|"
-                            << dados.getDtNascimento() << endl;
-                    Output2 << dados.getNome().size()
-                            << dados.getNome()
-                            << dados.getSobrenome().size()
-                            << dados.getSobrenome()
-                            << dados.getTelefone().size()
-                            << dados.getTelefone()
-                            << dados.getDtNascimento().size()
-                            << dados.getDtNascimento() << endl;
-                }
-                else
-                {
-                    Output1
-                        << line.size() << "|"
-                        << dados.getNome() << "|"
-                        << dados.getSobrenome() << "|"
-                        << dados.getTelefone() << "|"
-                        << dados.getDtNascimento() << endl;
-                    Output2
-                        << dados.getNome().size()
+                Output1
+                    << line.size()
+                    << dados.getNome() << "|"
+                    << dados.getSobrenome() << "|"
+                    << dados.getTelefone() << "|"
+                    << dados.getDtNascimento();
+
+                Output2 << dados.getNome().size()
                         << dados.getNome()
                         << dados.getSobrenome().size()
                         << dados.getSobrenome()
@@ -95,7 +78,6 @@ void Arquivo(string nomeArquivo)
                         << dados.getTelefone()
                         << dados.getDtNascimento().size()
                         << dados.getDtNascimento() << endl;
-                }
 
                 if (cont != 0)
                 {
@@ -105,6 +87,22 @@ void Arquivo(string nomeArquivo)
                         << "Telefone=" << dados.getTelefone() << "|"
                         << "Nascimento=" << dados.getDtNascimento() << endl;
                 }
+
+                tam = nome.size();
+                Output4.write(reinterpret_cast<char *>(&tam), sizeof(int));
+                Output4.write(reinterpret_cast<char *>(&nome[0]), tam * sizeof(char));
+
+                tam = sobrenome.size();
+                Output4.write(reinterpret_cast<char *>(&tam), sizeof(int));
+                Output4.write(reinterpret_cast<char *>(&sobrenome[0]), tam * sizeof(char));
+
+                tam = telefone.size();
+                Output4.write(reinterpret_cast<char *>(&tam), sizeof(int));
+                Output4.write(reinterpret_cast<char *>(&telefone[0]), tam * sizeof(char));
+
+                tam = dtNascimento.size();
+                Output4.write(reinterpret_cast<char *>(&tam), sizeof(int));
+                Output4.write(reinterpret_cast<char *>(&dtNascimento[0]), tam * sizeof(char));
 
                 cont++;
             }
@@ -121,6 +119,7 @@ void Arquivo(string nomeArquivo)
     Output1.close();
     Output2.close();
     Output3.close();
+    Output4.close();
 }
 
 void ArquivoFixo(string nomeArquivo)
