@@ -22,11 +22,11 @@ dados.o: dados.cpp dados.h
 clean:
 	del /q /f $(OBJECTS)
 	del /q /f *.exe
-	del /q /f IndicacaoDeTamanhoRegistro.txt
+	del /q /f *.dat
 	del /q /f IndicacaoDeTamanhoCampo.txt
 	del /q /f SeparadosPorTags.txt
-	del /q /f IndicacaoDeTamanhoCampo.dat
-	del /q /f TamanhoFixo.dat
+	del /q /f ArquivoRegistroVariavel.txt
+
 
 run: all
 	./$(MAIN).exe

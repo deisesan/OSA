@@ -5,8 +5,13 @@ int main()
 {
     string nomeArquivo = "Dados.txt";
 
-    Arquivo(nomeArquivo);
-    ArquivoFixo(nomeArquivo);
-   
+    /* Campo */
+    ArquivoCampo(nomeArquivo);
+    ArquivoCampoFixo(nomeArquivo);
+
+    /* Registro */
+    ArquivoRegistroFixo(nomeArquivo);
+    ArquivoRegistroVariavel(nomeArquivo);
+
     return 0;
 }

@@ -7,7 +7,9 @@
 
 using namespace std;
 
-void Arquivo(string nomeArquivo);
-void ArquivoFixo(string nomeArquivo);
+void ArquivoCampo(string nomeArquivo);
+void ArquivoCampoFixo(string nomeArquivo);
+void ArquivoRegistroFixo(string nomeArquivo);
+void ArquivoRegistroVariavel(string nomeArquivo);
 
 #endif
