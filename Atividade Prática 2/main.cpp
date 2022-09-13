@@ -1,8 +1,11 @@
 #include "biblioteca.h"
+#include "funcoes.h"
 
 int main()
 {
-    cout << "Ola Mundo!";
+    string nomeArquivo = "netflix_titles.csv";
+
+    Arquivo(nomeArquivo);
 
     return 0;
 }
