@@ -2,7 +2,7 @@
 #define FUNCOES_H
 
 #include "biblioteca.h"
-#include "registro.h"
+#include "netflix.h"
 
 using namespace std;
 

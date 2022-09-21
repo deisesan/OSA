@@ -1,9 +1,9 @@
-#ifndef REGISTRO_H
-#define REGISTRO_H
+#ifndef NETFLIX_H
+#define NETFLIX_H
 
 #include "biblioteca.h"
 
-class Registro
+class Netflix
 {
 private:
     string show_id;
@@ -21,7 +21,7 @@ private:
 
 public:
     // Constructor
-    Registro();
+    Netflix();
 
     // Getters
     string getShowId();
@@ -51,8 +51,11 @@ public:
     void setListedIn(string listed_in);
     void setDescription(string description);
 
+    void clear();
+    int size();
+
     // Destructor
-    ~Registro();
+    ~Netflix();
 };
 
-#endif // REGISTRO_H
+#endif // NETFLIX_H
