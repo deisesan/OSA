@@ -1,7 +1,7 @@
 # definindo as variáveis do projeto (MAIN é o nome do arquivo principal, que contem a função main, sem a extensao)
 MAIN 	:= main
 # objetos a serem gerados na compilação
-OBJECTS := main.o Pessoa.o Buffer.o funcoes.o
+OBJECTS := main.o pessoa.o buffer.o funcoes.o
 # (para C, pode-se usar o padrão ISO 2011 (c11) ou 2018 (c18), dependendo do seu compilador...
 # usar -std=c98 no lugar do c++11, c++17, c++20, etc.. 
 
@@ -33,22 +33,21 @@ all: main.exe
 main.exe: $(OBJECTS)  
 	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTPUTMAIN) $(MATH)
 
-
 # gerando o arquivo objeto da função principal... adicionar as dependencias (se houverem)
-main.o: $(MAIN).cpp Pessoa.h Buffer.h
+main.o: $(MAIN).cpp pessoa.h buffer.h
 	$(CC) $(FLAGS) -c $(MAIN).cpp
 
 # gerando o arquivo executavel
-Pessoa.o: Pessoa.cpp Pessoa.h Buffer.h
-	$(CC) $(FLAGS) -c Pessoa.cpp
+pessoa.o: pessoa.cpp pessoa.h buffer.h
+	$(CC) $(FLAGS) -c pessoa.cpp
 
 # gerando o arquivo executavel
 funcoes.o: funcoes.cpp funcoes.h
 	$(CC) $(FLAGS) -c funcoes.cpp
 	
 # gerando o arquivo objeto da minha biblioteca 1 (myFunc1.o) que depende dos arquivos myFunc1.c, myFunc1.h
-Buffer.o: Buffer.cpp Buffer.h
-	$(CC) $(FLAGS) -c Buffer.cpp
+buffer.o: buffer.cpp buffer.h
+	$(CC) $(FLAGS) -c buffer.cpp
 
 clean:
 	$(RM) $(OBJECTS)

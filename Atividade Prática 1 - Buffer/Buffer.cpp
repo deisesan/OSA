@@ -1,4 +1,4 @@
-#include "Buffer.h"
+#include "buffer.h"
 
 Buffer::Buffer(char d, int tam_max)
 // construtor do Buffer... inicializa o buffer

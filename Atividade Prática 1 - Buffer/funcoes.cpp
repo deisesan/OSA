@@ -1,19 +1,23 @@
-#include "Pessoa.h"
+#include "pessoa.h"
 
-void ArquivoCampo(string nomeArquivo)
+#define TAM_NOME 50
+#define TAM_FONE 15
+#define TAM_NASC 10
+
+void Arquivo(string nomeArquivo)
 {
     Pessoa p;
     string line;
-    char nome[18];
-    char sobrenome[10];
-    char telefone[15];
-    char dia[2];
-    char mes[2];
-    char ano[4];
-    int i = 0, j;
-    ofstream output;
+    char nome[TAM_NOME + 1];
+    char sobrenome[TAM_NOME + 1];
+    char telefone[TAM_FONE + 1];
+    char nascimento[TAM_NASC + 1];
+    int i = 0, j = 0;
 
-    output.open("dados.dat", ios::out | ios::binary);
+    Buffer buff;
+    p.InitBuffer(buff);
+
+    ofstream output("dados.dat", ios::binary);
 
     if (output.good())
     {
@@ -21,70 +25,54 @@ void ArquivoCampo(string nomeArquivo)
 
         while (!Input.eof())
         {
-
-            Buffer buff;
-            p.InitBuffer(buff);
-
             cout << "\nSituacao atual do Buffer:\n";
             buff.Print();
 
-            getline(Input, line);
+            getline(Input, line, '\n');
 
             if (line != "")
             {
                 // Leitura de Nome
-                j = 0;
                 while (line[i] != '|')
                 {
                     nome[j] = line[i];
+                    i++;
+                    j++;
                 }
                 strcpy(p.nome, nome);
                 i++;
+                j = 0;
 
                 // Leitura de Sobrenome
-                j = 0;
                 while (line[i] != '|')
                 {
                     sobrenome[j] = line[i];
                     i++;
+                    j++;
                 }
                 strcpy(p.sobrenome, sobrenome);
                 i++;
+                j = 0;
 
                 // Leitura de Telefone
-                j = 0;
                 while (line[i] != '|')
                 {
                     telefone[j] = line[i];
                     i++;
+                    j++;
                 }
                 strcpy(p.telefone, telefone);
                 i++;
+                j = 0;
 
                 // Leitura de Data de Nascimento
-                j = 0;
-                while (line[i] != '/')
-                {
-                    dia[j] = line[i];
-                    i++;
-                }
-                i++;
-
-                j = 0;
-                while (line[i] != '/')
-                {
-                    mes[j] = line[i];
-                    i++;
-                }
-                i++;
-                j = 0;
                 while (line[i] != '\0')
                 {
-                    ano[0] = line[i];
+                    nascimento[j] = line[i];
                     i++;
+                    j++;
                 }
-                p.data_nasc.Set(stoi(dia), stoi(mes), stoi(ano));
-                i++;
+                p.data_nasc.Set(nascimento);
 
                 p.Print();
 
@@ -93,41 +81,17 @@ void ArquivoCampo(string nomeArquivo)
                 cout << "\nSituacao atual do Buffer:\n";
                 buff.Print();
 
-                /// gerando um arquivo no formato determinado pelo buffer...
-                ofstream saida("arquivo.dat", ios::binary);
-                buff.Write(saida);
+                buff.Write(output);
 
-                saida.close();
-
-                /// testando a leitura do arquivo gerado
-                ifstream entrada("arquivo.dat");
                 buff.Clear();
-                while (buff.Read(entrada))
-                {
-                    if (p.UnPack(buff))
-                    {
-                        cout << "Pessoa Lida: \n";
-                        p.Print();
-                    }
-                    else
-                        cout << "Erro ao ler Dados Pessoa!\n";
-                }
             }
 
             i = 0;
-            // nome.clear();
-            // sobrenome.clear();
-            // telefone.clear();
-            // dia.clear();
-            // mes.clear();
-            // ano.clear();
-            // line.clear();
+            j = 0;
             nome[0] = '\0';
             sobrenome[0] = '\0';
             telefone[0] = '\0';
-            dia[0] = '\0';
-            ano[0] = '\0';
-            mes[0] = '\0';
+            nascimento[0] = '\0';
         }
     }
 

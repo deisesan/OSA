@@ -4,7 +4,7 @@
 #define TAM_NOME 50
 #define TAM_FONE 15
 
-#include "Buffer.h"
+#include "buffer.h"
 #include "biblioteca.h"
 
 class Data
@@ -30,6 +30,7 @@ public:
     char nome[TAM_NOME + 1];
     char sobrenome[TAM_NOME + 1];
     char telefone[TAM_FONE + 1];
+    char nascimento[TAM_NOME + 1];
     Data data_nasc;
 
     Pessoa();           // chama o método Clear

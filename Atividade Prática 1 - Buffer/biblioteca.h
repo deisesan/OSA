@@ -4,7 +4,6 @@
 #include <iostream>
 using namespace std;
 
-#include <fstream>
 #include <string>
 #include <string.h> // biblioteca da linguagem C para manipulação de vetores de char
 #include <iostream>

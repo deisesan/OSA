@@ -1,4 +1,4 @@
-#include "Pessoa.h"
+#include "pessoa.h"
 
 ostream &operator<<(ostream &out, const Data &d)
 {
