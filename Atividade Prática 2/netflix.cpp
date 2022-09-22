@@ -146,6 +146,7 @@ void Netflix::clear()
 int Netflix::size()
 {
     int tam = 0;
+    string delimitador = "|";
 
     tam = show_id.size() +
           type.size() +
@@ -158,7 +159,8 @@ int Netflix::size()
           rating.size() +
           duration.size() +
           listed_in.size() +
-          description.size();
+          description.size() +
+          (delimitador.size() * 11);
 
     return tam;
 }

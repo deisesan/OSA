@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "*.s": "gas",
+        "iosfwd": "cpp",
+        "string": "cpp"
+    }
+}

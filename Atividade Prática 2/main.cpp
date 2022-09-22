@@ -3,7 +3,7 @@
 
 int main()
 {
-    string nomeArquivo = "netflix_titles1.csv";
+    string nomeArquivo = "netflix_titles.csv";
 
     Arquivo(nomeArquivo);
 

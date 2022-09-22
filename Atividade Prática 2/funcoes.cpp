@@ -3,12 +3,14 @@
 void Arquivo(string nomeArquivo)
 {
     Netflix registro;
+    string newArquivo = nomeArquivo;
     ofstream output;
     string line;
     string aux;
     int i = 0, tam = 0;
 
-    output.open("saida.dat", ios::out | ios::binary);
+    newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
+    output.open(newArquivo, ios::out | ios::binary);
 
     if (output.is_open())
     {
@@ -125,7 +127,6 @@ void Arquivo(string nomeArquivo)
                     i++;
                 }
                 registro.setDescription(aux);
-                i++;
                 aux.clear();
 
                 tam = registro.size();
