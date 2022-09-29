@@ -127,6 +127,94 @@ void Netflix::setDescription(string description)
     this->description = description;
 }
 
+void Netflix::split(string line)
+{
+    int i = 0;
+
+    while (line[i] != ';')
+    {
+        show_id += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        type += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        title += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        director += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        cast += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        country += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        date_added += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        release_year += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        rating += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        duration += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != ';')
+    {
+        listed_in += line[i];
+        i++;
+    }
+    i++;
+
+    while (line[i] != '\0')
+    {
+        description += line[i];
+        i++;
+    }
+}
+
 void Netflix::clear()
 {
     show_id.clear();
@@ -146,17 +234,17 @@ void Netflix::clear()
 void Netflix::print()
 {
     cout
-        << show_id
-        << type
-        << title
-        << director
-        << cast
-        << country
-        << date_added
-        << release_year
-        << rating
-        << duration
-        << listed_in
+        << show_id << "|"
+        << type << "|"
+        << title << "|"
+        << director << "|"
+        << cast << "|"
+        << country << "|"
+        << date_added << "|"
+        << release_year << "|"
+        << rating << "|"
+        << duration << "|"
+        << listed_in << "|"
         << description << endl;
 }
 

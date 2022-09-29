@@ -51,6 +51,7 @@ public:
     void setListedIn(string listed_in);
     void setDescription(string description);
 
+    void split(string line);
     void clear();
     void print();
     int size();
