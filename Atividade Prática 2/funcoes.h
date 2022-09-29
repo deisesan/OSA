@@ -7,5 +7,6 @@
 using namespace std;
 
 void Arquivo(string nomeArquivo);
+void IndiceDireto(string nomeArquivo);
 
 #endif

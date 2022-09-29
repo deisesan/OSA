@@ -143,13 +143,39 @@ void Arquivo(string nomeArquivo)
                        << registro.getRating() << "|"
                        << registro.getDuration() << "|"
                        << registro.getListedIn() << "|"
-                       << registro.getDescription() << endl;
+                       << registro.getDescription();
 
                 i = 0;
                 tam = 0;
                 registro.clear();
                 line.clear();
             }
+        }
+    }
+
+    output.close();
+}
+
+void IndiceDireto(string nomeArquivo)
+{
+    Netflix registro;
+    ofstream output;
+    int tam;
+
+    output.open("netflix_indices.dat", ios::out | ios::binary);
+
+    if (output.is_open())
+    {
+        ifstream input(nomeArquivo, ios::binary);
+
+        while (!input.eof())
+        {
+            char buffer[1000];
+            input.read((char *)&tam, sizeof(int));
+            input.read(buffer, tam);
+            cout << tam << endl;
+            cout << buffer << endl;
+            getchar();
         }
     }
 

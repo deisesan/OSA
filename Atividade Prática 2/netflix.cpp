@@ -143,6 +143,23 @@ void Netflix::clear()
     description.clear();
 }
 
+void Netflix::print()
+{
+    cout
+        << show_id
+        << type
+        << title
+        << director
+        << cast
+        << country
+        << date_added
+        << release_year
+        << rating
+        << duration
+        << listed_in
+        << description << endl;
+}
+
 int Netflix::size()
 {
     int tam = 0;

@@ -52,6 +52,7 @@ public:
     void setDescription(string description);
 
     void clear();
+    void print();
     int size();
 
     // Destructor
