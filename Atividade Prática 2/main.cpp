@@ -9,7 +9,7 @@ int main()
     Arquivo(nomeArquivo);
     IndiceDireto(nomeArquivoDat);
 
-    //pesquisa(nomeArquivo);
+    pesquisa(nomeArquivo);
 
     return 0;
 }

@@ -93,7 +93,7 @@ void pesquisa(string nomeArquivo)
     bool found = false;
     string line;
     string str_pesquisa, aux;
-    int opcao;
+    string opcao, one = "1", two = "2";
 
     ifstream input(nomeArquivo);
     do
@@ -101,9 +101,9 @@ void pesquisa(string nomeArquivo)
         cout << "Deseja fazer pesquisa por Show_id(digite 1) ou Titulo(digite 2): " << endl;
         cin >> opcao;
 
-    } while (opcao != 1 && opcao != 2);
+    } while (one.compare(opcao)!=0 && two.compare(opcao)!= 0);
 
-    if (opcao == 1)
+    if (opcao == "1")
     {
 
         cout << "Digite Show_id que deseja pesquisar: ";
@@ -122,7 +122,7 @@ void pesquisa(string nomeArquivo)
 
         registro.split(line);
 
-        if (opcao == 1)
+        if (opcao == "1")
         {
 
             aux = registro.getShowId();
@@ -136,11 +136,11 @@ void pesquisa(string nomeArquivo)
             if (aux.compare(str_pesquisa) == 0)
             {
                 found = true;
-                cout << " ---> RESULTADO ENCONTRADO: " << endl;
+                cout << " ----------> RESULTADO ENCONTRADO: " << endl;
                 registro.print();
             }
         }
-        else if (opcao == 2)
+        else 
         {
             aux = registro.getTitle();
 
@@ -153,7 +153,7 @@ void pesquisa(string nomeArquivo)
             if (aux.find(str_pesquisa) != std::string::npos)
             {
                 found = true;
-                cout << "---> RESULTADO ENCONTRADO: " << endl;
+                cout << "----------> RESULTADO ENCONTRADO: " << endl;
                 registro.print();
             }
         }
@@ -164,6 +164,6 @@ void pesquisa(string nomeArquivo)
     }
     if (!found)
     {
-        cout << "NENHUM RESULTADO ENCONTRADO: " << endl;
+        cout << "----------> NENHUM RESULTADO ENCONTRADO." << endl;
     }
 }
