@@ -127,6 +127,7 @@ void Netflix::setDescription(string description)
     this->description = description;
 }
 
+
 void Netflix::split(string line)
 {
     int i = 0;
@@ -235,7 +236,7 @@ void Netflix::clear()
 
 void Netflix::print()
 {
-    cout
+    cout 
         << show_id << "|"
         << type << "|"
         << title << "|"

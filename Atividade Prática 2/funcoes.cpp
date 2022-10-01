@@ -2,11 +2,11 @@
 
 void Arquivo(string nomeArquivo)
 {
-    Netflix registro;
+    Netflix registro, maiorRegistro, menorRegistro;
     string newArquivo = nomeArquivo;
     ofstream output;
     string line;
-    int tam = 0;
+    int i = 0, tam = 0, qtd_registros = 0;
 
     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
     output.open(newArquivo, ios::out | ios::binary);
@@ -21,25 +21,54 @@ void Arquivo(string nomeArquivo)
 
             registro.split(line);
 
-            tam = registro.size();
-            output.write(reinterpret_cast<char *>(&tam), sizeof(int));
+            if (registro.getShowId() != "")
+            {
 
-            output << registro.getShowId() << ";"
-                   << registro.getType() << ";"
-                   << registro.getTitle() << ";"
-                   << registro.getDirector() << ";"
-                   << registro.getCast() << ";"
-                   << registro.getCountry() << ";"
-                   << registro.getDateAdded() << ";"
-                   << registro.getReleaseYear() << ";"
-                   << registro.getRating() << ";"
-                   << registro.getDuration() << ";"
-                   << registro.getListedIn() << ";"
-                   << registro.getDescription();
+                if (i == 1)
+                {
+                    maiorRegistro = registro;
+                    menorRegistro = registro;
+                }
 
+                if (i != 0)
+                    qtd_registros++;
+
+                tam = registro.size();
+                output.write(reinterpret_cast<char *>(&tam), sizeof(int));
+
+                if (tam > maiorRegistro.size())
+                {
+                    maiorRegistro = registro;
+                }
+                else if (tam < menorRegistro.size())
+                {
+                    menorRegistro = registro;
+                }
+
+                output << registro.getShowId() << ";"
+                       << registro.getType() << ";"
+                       << registro.getTitle() << ";"
+                       << registro.getDirector() << ";"
+                       << registro.getCast() << ";"
+                       << registro.getCountry() << ";"
+                       << registro.getDateAdded() << ";"
+                       << registro.getReleaseYear() << ";"
+                       << registro.getRating() << ";"
+                       << registro.getDuration() << ";"
+                       << registro.getListedIn() << ";"
+                       << registro.getDescription();
+            }
             registro.clear();
             line.clear();
+            i++;
         }
+        cout << endl<< string(5, '-') << "> QUANTIDADE DE REGISTROS: " << qtd_registros << endl;
+        cout << endl<< string(5, '-') << "> MAIOR REGISTRO: ";
+        maiorRegistro.print();
+        cout << endl<< string(5, '-') << ">TAMANHO DE MAIOR REGISTRO: " << maiorRegistro.size() << endl;
+        cout << endl<< string(5, '-') << "> MENOR REGISTRO: ";
+        menorRegistro.print();
+        cout << endl<< string(5, '-') << ">TAMANHO DE MENOR REGISTRO: " << menorRegistro.size() << endl;
     }
 
     output.close();
@@ -98,20 +127,23 @@ void pesquisa(string nomeArquivo)
     ifstream input(nomeArquivo);
     do
     {
-        cout << "Deseja fazer pesquisa por Show_id(digite 1) ou Titulo(digite 2): " << endl;
+        cout << endl
+             << string(5, '-') << "> Deseja fazer pesquisa por Show_id(digite 1) ou Titulo(digite 2): " << endl;
         cin >> opcao;
 
-    } while (one.compare(opcao)!=0 && two.compare(opcao)!= 0);
+    } while (one.compare(opcao) != 0 && two.compare(opcao) != 0);
 
     if (opcao == "1")
     {
 
-        cout << "Digite Show_id que deseja pesquisar: ";
+        cout << endl
+             << string(5, '-') << "> Digite Show_id que deseja pesquisar: ";
         cin >> str_pesquisa;
     }
     else
     {
-        cout << "Digite titulo que deseja procurar: ";
+        cout << endl
+             << string(5, '-') << "> Digite titulo que deseja procurar: ";
         cin.ignore();
         getline(cin, str_pesquisa);
     }
@@ -136,11 +168,12 @@ void pesquisa(string nomeArquivo)
             if (aux.compare(str_pesquisa) == 0)
             {
                 found = true;
-                cout << " ----------> RESULTADO ENCONTRADO: " << endl;
+                cout << endl
+                     << string(5, '-') << "> RESULTADO ENCONTRADO: ";
                 registro.print();
             }
         }
-        else 
+        else
         {
             aux = registro.getTitle();
 
@@ -153,7 +186,8 @@ void pesquisa(string nomeArquivo)
             if (aux.find(str_pesquisa) != std::string::npos)
             {
                 found = true;
-                cout << "----------> RESULTADO ENCONTRADO: " << endl;
+                cout << endl
+                     << string(5, '-') << "> RESULTADO ENCONTRADO: ";
                 registro.print();
             }
         }
@@ -164,6 +198,7 @@ void pesquisa(string nomeArquivo)
     }
     if (!found)
     {
-        cout << "----------> NENHUM RESULTADO ENCONTRADO." << endl;
+        cout << endl
+             << string(5, '-') << "> NENHUM RESULTADO ENCONTRADO." << endl;
     }
 }
