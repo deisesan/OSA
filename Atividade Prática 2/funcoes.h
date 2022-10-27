@@ -8,5 +8,6 @@ using namespace std;
 
 void Arquivo(string nomeArquivo);
 void IndiceDireto(string nomeArquivo);
+void pesquisa(string nomeArquivo);
 
 #endif
