@@ -6,7 +6,7 @@ void Arquivo(string nomeArquivo)
     string newArquivo = nomeArquivo;
     ofstream output;
     string line, maxCountry = "";
-    int tamReg = 0, tamType = 0, tamTitle = 0, tamCountry = 0, aux = 0;
+    int tamReg = 0, tamType = 0, tamTitle = 0, tamCountry = 0, aux = 0, cabecalho = 0;
 
     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
     output.open(newArquivo, ios::out | ios::binary);
@@ -42,17 +42,25 @@ void Arquivo(string nomeArquivo)
                 tamCountry = registro.getCountry().size();
             }
 
-            output << registro.getShowId() << ";"
-                   << registro.getType() << ";"
-                   << registro.getTitle() << ";"
-                   << registro.getCountry() << ";"
-                   << registro.getReleaseYear();
+            if (cabecalho == 1)
+            {
+                output << registro.getShowId() << ";"
+                       << registro.getType() << ";"
+                       << registro.getTitle() << ";"
+                       << registro.getCountry() << ";"
+                       << registro.getReleaseYear() << endl;
+            }
+            else
+            {
+                cabecalho = 1;
+            }
 
             registro.clear();
             line.clear();
         }
 
-        cout << tamType << " " << tamTitle << " " << maxCountry.size();
+        // Print dos Máximos
+        // cout << tamType << " " << tamTitle << " " << maxCountry.size();
     }
 
     output.close();
