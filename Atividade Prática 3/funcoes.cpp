@@ -5,7 +5,7 @@ void Arquivo(string nomeArquivo)
     Netflix registro;
     string newArquivo = nomeArquivo;
     ofstream output;
-    string line;
+    string line, maxCountry = "";
     int tamReg = 0, tamType = 0, tamTitle = 0, tamCountry = 0, aux = 0;
 
     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
@@ -17,6 +17,9 @@ void Arquivo(string nomeArquivo)
 
         while (!input.eof())
         {
+            if (input.eof())
+                break;
+
             getline(input, line);
 
             registro.split(line);
@@ -34,7 +37,10 @@ void Arquivo(string nomeArquivo)
 
             aux = registro.getCountry().size();
             if (aux > tamCountry)
+            {
+                maxCountry = registro.getCountry();
                 tamCountry = registro.getCountry().size();
+            }
 
             output << registro.getShowId() << ";"
                    << registro.getType() << ";"
@@ -46,7 +52,7 @@ void Arquivo(string nomeArquivo)
             line.clear();
         }
 
-        cout << tamType << " " << tamTitle << " " << tamCountry;
+        cout << tamType << " " << tamTitle << " " << maxCountry.size();
     }
 
     output.close();
