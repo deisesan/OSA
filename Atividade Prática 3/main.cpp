@@ -3,9 +3,11 @@
 
 int main()
 {
-    string nomeArquivo = "netflix_titles.csv";
+    string nomeArquivo = "netflix_titles1.csv";
+    string nomeArquivoDat = "netflix_titles1.dat";
 
     Arquivo(nomeArquivo);
+    Indexacao(nomeArquivoDat);
 
     return 0;
 }

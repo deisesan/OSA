@@ -6,7 +6,7 @@ void Arquivo(string nomeArquivo)
     string newArquivo = nomeArquivo;
     ofstream output;
     string line, maxCountry = "";
-    int tamReg = 0, tamType = 0, tamTitle = 0, tamCountry = 0, aux = 0, cabecalho = 0;
+    int deleted = 0, cabecalho = 0;
 
     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
     output.open(newArquivo, ios::out | ios::binary);
@@ -17,33 +17,14 @@ void Arquivo(string nomeArquivo)
 
         while (!input.eof())
         {
-            if (input.eof())
-                break;
-
             getline(input, line);
 
             registro.split(line);
 
-            tamReg = registro.size();
-            output.write(reinterpret_cast<char *>(&tamReg), sizeof(int));
-
-            aux = registro.getType().size();
-            if (aux > tamType)
-                tamType = registro.getShowId().size();
-
-            aux = registro.getTitle().size();
-            if (aux > tamTitle)
-                tamTitle = registro.getTitle().size();
-
-            aux = registro.getCountry().size();
-            if (aux > tamCountry)
-            {
-                maxCountry = registro.getCountry();
-                tamCountry = registro.getCountry().size();
-            }
-
             if (cabecalho == 1)
             {
+                output.write((char *)&deleted, sizeof(int));
+
                 output << registro.getShowId() << ";"
                        << registro.getType() << ";"
                        << registro.getTitle() << ";"
@@ -58,10 +39,24 @@ void Arquivo(string nomeArquivo)
             registro.clear();
             line.clear();
         }
-
-        // Print dos Máximos
-        // cout << tamType << " " << tamTitle << " " << maxCountry.size();
     }
 
     output.close();
+}
+
+void Indexacao(string nomeArquivo)
+{
+    // Index index;
+    // string showId;
+    int deleted;
+
+    ifstream input(nomeArquivo, ios::binary);
+
+    while (!input.eof())
+    {
+        // input.read((char *)&index, sizeof(Index));
+        input.read((char *)&deleted, sizeof(int));
+
+        cout << deleted << endl;
+    }
 }
