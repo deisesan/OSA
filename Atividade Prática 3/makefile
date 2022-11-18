@@ -1,5 +1,5 @@
 MAIN = main
-OBJECTS	= $(MAIN).o funcoes.o netflix.o
+OBJECTS	= $(MAIN).o funcoes.o 
 FLAGS = -Wall -Wextra -std=c++17 -pedantic-errors
 MATH = -lm
 DEBUG = -g
@@ -15,9 +15,6 @@ main.o: $(MAIN).cpp funcoes.cpp funcoes.h
 
 funcoes.o: funcoes.cpp funcoes.h
 	$(CC) -c funcoes.cpp -o funcoes.o $(FLAGS)
-
-netflix.o: netflix.cpp netflix.h
-	$(CC) -c netflix.cpp -o netflix.o $(FLAGS)
 
 clean:
 	del /q /f $(OBJECTS)

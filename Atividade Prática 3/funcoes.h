@@ -2,12 +2,11 @@
 #define FUNCOES_H
 
 #include "biblioteca.h"
-#include "netflix.h"
-#include "index.h"
+#include "registro.h"
 
 using namespace std;
 
 void Arquivo(string nomeArquivo);
-void Indexacao(string nomeArquivo);
+void Inserir(string nomeArquivo);
 
 #endif

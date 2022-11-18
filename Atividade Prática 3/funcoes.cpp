@@ -2,11 +2,10 @@
 
 void Arquivo(string nomeArquivo)
 {
-    Netflix registro;
-    string newArquivo = nomeArquivo;
+    Registro registro;
+    int cabecalho = 0, i = 0, j = 0;
+    string newArquivo = nomeArquivo, line, maxCountry = "";
     ofstream output;
-    string line, maxCountry = "";
-    int deleted = 0, cabecalho = 0;
 
     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
     output.open(newArquivo, ios::out | ios::binary);
@@ -19,24 +18,89 @@ void Arquivo(string nomeArquivo)
         {
             getline(input, line);
 
-            registro.split(line);
-
             if (cabecalho == 1)
             {
-                output.write((char *)&deleted, sizeof(int));
+                if (line != "")
+                {
+                    while (line[i] != ';')
+                    {
+                        registro.show_id[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
 
-                output << registro.getShowId() << ";"
-                       << registro.getType() << ";"
-                       << registro.getTitle() << ";"
-                       << registro.getCountry() << ";"
-                       << registro.getReleaseYear() << endl;
+                    while (line[i] != ';')
+                    {
+                        registro.type[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        registro.title[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        registro.country[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    while (line[i] != ';')
+                    {
+                        registro.release_year[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
+
+                    output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
+                    output << endl;
+                }
             }
             else
             {
                 cabecalho = 1;
             }
 
-            registro.clear();
+            i = 0;
             line.clear();
         }
     }
@@ -44,19 +108,50 @@ void Arquivo(string nomeArquivo)
     output.close();
 }
 
-void Indexacao(string nomeArquivo)
+void Inserir(string nomeArquivo)
 {
-    // Index index;
-    // string showId;
-    int deleted;
+    Registro registro;
+    int reg = 0, cabecalho = 0;
+    string newArquivo = nomeArquivo, id, line;
 
-    ifstream input(nomeArquivo, ios::binary);
+    newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
+    ofstream output(newArquivo, ios::app);
 
-    while (!input.eof())
+    // Leitura do Teclado
+    cin >> registro.type;
+    cin >> registro.title;
+    cin >> registro.country;
+    cin >> registro.release_year;
+
+    if (output.is_open())
     {
-        // input.read((char *)&index, sizeof(Index));
-        input.read((char *)&deleted, sizeof(int));
+        ifstream input(nomeArquivo);
 
-        cout << deleted << endl;
+        while (!input.eof())
+        {
+            getline(input, line);
+
+            if (cabecalho == 1)
+            {
+                if (line != "")
+                {
+                    reg++;
+                }
+            }
+            else
+            {
+                cabecalho = 1;
+            }
+        }
+
+        id = "s" + to_string(reg + 1);
+
+        strcpy(registro.show_id, id.c_str());
+
+        cout << registro.show_id;
+
+        output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
+
+        output.close();
     }
 }
