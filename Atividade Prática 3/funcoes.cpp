@@ -28,7 +28,9 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
+
                     ++i;
+
                     j = 0;
 
                     while (line[i] != ';')
@@ -91,8 +93,7 @@ void Arquivo(string nomeArquivo)
                     ++i;
                     j = 0;
 
-                    output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
-                    output << endl;
+                    output.write((char*)&registro, sizeof(Registro));
                 }
             }
             else
@@ -100,6 +101,11 @@ void Arquivo(string nomeArquivo)
                 cabecalho = 1;
             }
 
+            registro.show_id[0] = '\0';
+            registro.type[0] = '\0';
+            registro.title[0] = '\0';
+            registro.release_year[0] = '\0';
+            registro.release_year[0] = '\0';
             i = 0;
             line.clear();
         }
@@ -108,50 +114,107 @@ void Arquivo(string nomeArquivo)
     output.close();
 }
 
-void Inserir(string nomeArquivo)
+// void Inserir(string nomeArquivo)
+// {
+//     Registro registro;
+//     int reg = 0, cabecalho = 0;
+//     string newArquivo = nomeArquivo, id, line;
+
+//     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
+//     ofstream output(newArquivo, ios::app);
+
+//     // Leitura do Teclado
+//     cin >> registro.type;
+//     cin >> registro.title;
+//     cin >> registro.country;
+//     cin >> registro.release_year;
+
+//     if (output.is_open())
+//     {
+//         ifstream input(nomeArquivo);
+
+//         while (!input.eof())
+//         {
+//             getline(input, line);
+
+//             if (cabecalho == 1)
+//             {
+//                 if (line != "")
+//                 {
+//                     reg++;
+//                 }
+//             }
+//             else
+//             {
+//                 cabecalho = 1;
+//             }
+//         }
+
+//         id = "s" + to_string(reg + 1);
+
+//         strcpy(registro.show_id, id.c_str());
+
+//         cout << registro.show_id;
+
+//         output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
+
+//         output.close();
+//     }
+// }
+
+void buscaBinaria(string arquivoBinario)
 {
+    long int inicio, meio, fim;
+    ifstream input;
+    ofstream output("teste.dat", ios::out);
     Registro registro;
-    int reg = 0, cabecalho = 0;
-    string newArquivo = nomeArquivo, id, line;
+   
+    inicio = 0;
 
-    newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
-    ofstream output(newArquivo, ios::app);
+    input.open(arquivoBinario, ios::in | ios::binary);
 
-    // Leitura do Teclado
-    cin >> registro.type;
-    cin >> registro.title;
-    cin >> registro.country;
-    cin >> registro.release_year;
+    input.seekg(0, ios::end);
+    long int tamanhoArquivo = input.tellg();
+    //int resultado;
 
-    if (output.is_open())
-    {
-        ifstream input(nomeArquivo);
+    fim = (tamanhoArquivo / sizeof(Registro)) - 1;
+    
+    
+    // while (inicio <= fim)
+    // {
+    //     meio = (fim + inicio) / 2;
+    //     input.seekg(meio * sizeof(Registro), ios::beg);
+    //     input.read((char *)&registro, sizeof(registro));
 
-        while (!input.eof())
-        {
-            getline(input, line);
+    
+    //     resultado = strcmp("s5", registro.show_id);
+    //     cout<<"Resultado: "<<resultado<<endl;
 
-            if (cabecalho == 1)
-            {
-                if (line != "")
-                {
-                    reg++;
-                }
-            }
-            else
-            {
-                cabecalho = 1;
-            }
-        }
+    //     if (resultado ==1)
+    //     {
 
-        id = "s" + to_string(reg + 1);
+    //         inicio = meio + 1;
+    //         cout<<"entrou 1"<<endl;
+    //     }
+    //     else if (resultado ==-1)
+    //     {
 
-        strcpy(registro.show_id, id.c_str());
+    //         fim = meio - 1;
+    //         cout<<"entrou 2"<<endl;
+    //     }
+    //     else 
+    //     if(resultado == 0)
+    //     {
+    //         cout<<"entrou 3";
+    //         output.write((char *)&registro, sizeof(Registro));
+             
+    //     }
+    // }
 
-        cout << registro.show_id;
-
-        output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
-
-        output.close();
-    }
+    meio = (fim + inicio) / 2;
+    input.seekg(meio * sizeof(Registro), ios::beg);
+    input.read((char *)&registro, sizeof(registro));
+     output.write((char *)&registro, sizeof(Registro));
+      cout<<"->"<<registro.show_id<<endl;
+  
 }

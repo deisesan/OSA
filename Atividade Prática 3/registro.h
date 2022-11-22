@@ -5,12 +5,11 @@
 
 struct Registro
 {
-  int deleted = 0;
-  char show_id[6];
-  char type[8];
-  char title[104];
-  char country[123];
-  char release_year[11];
+  char show_id[5];
+  char type[10];
+  char title[105];
+  char country[125];
+  char release_year[4];
 };
 
 #endif // REGISTRO_H
