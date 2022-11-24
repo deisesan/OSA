@@ -28,7 +28,8 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
-
+                    output.write((char *)&j, sizeof(int));
+                    // output.write((char*)&registro.show_id,sizeof(registro.show_id));
                     ++i;
 
                     j = 0;
@@ -39,6 +40,8 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
+                    output.write((char *)&j, sizeof(int));
+                    // output.write((char*)&registro.type,sizeof(registro.type));
                     ++i;
                     j = 0;
 
@@ -48,6 +51,8 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
+                    output.write((char *)&j, sizeof(int));
+                    // output.write((char*)&registro.title,sizeof(registro.title));
                     ++i;
                     j = 0;
 
@@ -73,6 +78,8 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
+                    output.write((char *)&j, sizeof(int));
+                    // output.write((char*)&registro.country,sizeof(registro.country));
                     ++i;
                     j = 0;
 
@@ -90,10 +97,17 @@ void Arquivo(string nomeArquivo)
                         ++i;
                         ++j;
                     }
+                    output.write((char *)&j, sizeof(int));
+                    // output.write((char*)&registro.release_year,sizeof(registro.release_year));
                     ++i;
                     j = 0;
 
-                    output.write((char*)&registro, sizeof(Registro));
+                    output.write((char *)&registro, sizeof(Registro));
+                    registro.show_id[0] = '\0';
+                    registro.type[0] = '\0';
+                    registro.title[0] = '\0';
+                    registro.release_year[0] = '\0';
+                    registro.release_year[0] = '\0';
                 }
             }
             else
@@ -101,11 +115,6 @@ void Arquivo(string nomeArquivo)
                 cabecalho = 1;
             }
 
-            registro.show_id[0] = '\0';
-            registro.type[0] = '\0';
-            registro.title[0] = '\0';
-            registro.release_year[0] = '\0';
-            registro.release_year[0] = '\0';
             i = 0;
             line.clear();
         }
@@ -162,59 +171,83 @@ void Arquivo(string nomeArquivo)
 //     }
 // }
 
-void buscaBinaria(string arquivoBinario)
+void buscaBinaria(string arquivoBinario, string chave)
 {
-    long int inicio, meio, fim;
+    bool find = false;
+    long int inicio = 0, meio, fim;
     ifstream input;
-    ofstream output("teste.dat", ios::out);
     Registro registro;
-   
-    inicio = 0;
+    int tamShowId, tamType, tamTitle, tamCountry, tamReleaseYear, intId, intchave;
+    string id, str, showId, type, title, country, releaseYear;
 
     input.open(arquivoBinario, ios::in | ios::binary);
 
     input.seekg(0, ios::end);
     long int tamanhoArquivo = input.tellg();
-    //int resultado;
 
-    fim = (tamanhoArquivo / sizeof(Registro)) - 1;
-    
-    
-    // while (inicio <= fim)
-    // {
-    //     meio = (fim + inicio) / 2;
-    //     input.seekg(meio * sizeof(Registro), ios::beg);
-    //     input.read((char *)&registro, sizeof(registro));
+    int aux = (sizeof(int) * 5) + (sizeof(Registro));
+    fim = (tamanhoArquivo / aux) - 1;
 
-    
-    //     resultado = strcmp("s5", registro.show_id);
-    //     cout<<"Resultado: "<<resultado<<endl;
+    str.append(chave, 1, chave.size());
+    intchave = stoi(str);
 
-    //     if (resultado ==1)
-    //     {
+    while (inicio <= fim)
+    {
+        tamShowId = 0;
+        tamType = 0;
+        tamTitle = 0;
+        tamCountry = 0;
+        tamReleaseYear = 0;
 
-    //         inicio = meio + 1;
-    //         cout<<"entrou 1"<<endl;
-    //     }
-    //     else if (resultado ==-1)
-    //     {
+        meio = (fim + inicio) / 2;
+        input.seekg((meio * aux), ios::beg);
+        input.read((char *)&tamShowId, sizeof(int));
+        input.read((char *)&tamType, sizeof(int));
+        input.read((char *)&tamTitle, sizeof(int));
+        input.read((char *)&tamCountry, sizeof(int));
+        input.read((char *)&tamReleaseYear, sizeof(int));
 
-    //         fim = meio - 1;
-    //         cout<<"entrou 2"<<endl;
-    //     }
-    //     else 
-    //     if(resultado == 0)
-    //     {
-    //         cout<<"entrou 3";
-    //         output.write((char *)&registro, sizeof(Registro));
-             
-    //     }
-    // }
+        input.read((char *)&registro, sizeof(Registro));
 
-    meio = (fim + inicio) / 2;
-    input.seekg(meio * sizeof(Registro), ios::beg);
-    input.read((char *)&registro, sizeof(registro));
-     output.write((char *)&registro, sizeof(Registro));
-      cout<<"->"<<registro.show_id<<endl;
-  
+        id.append(registro.show_id, 1, tamShowId);
+
+        intId = stoi(id);
+
+        if (intchave > intId)
+        {
+
+            inicio = meio + 1;
+        }
+        else if (intchave < intId)
+        {
+
+            fim = meio - 1;
+        }
+        else if (intchave == intId)
+        {
+            find = true;
+
+            showId.append(registro.show_id, 0, tamShowId);
+            type.append(registro.type, 0, tamType);
+            title.append(registro.title, 0, tamTitle);
+            country.append(registro.country, 0, tamCountry);
+            releaseYear.append(registro.release_year, 0, tamReleaseYear);
+
+            cout << "---> REGISTRO ENCONTRADO: " << endl;
+            cout << "---> Show_Id: " << showId << endl;
+            cout << "---> Type: " << type << endl;
+            cout << "---> Title: " << title << endl;
+            cout << "---> Contry: " << country << endl;
+            cout << "---> Release Year: " << releaseYear << endl;
+            break;
+        }
+
+        chave.clear();
+        id.clear();
+    }
+
+    if (find == false)
+    {
+        cout << "---> REGISTRO NAO ENCONTRADO: " << endl;
+    }
 }

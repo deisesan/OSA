@@ -2,14 +2,20 @@
 #include "funcoes.h"
 
 int main()
-{
-    string nomeArquivo = "netflix_titles1.csv";
-    string arquivoBinario = "netflix_titles1.dat";
+{    
+    string chave;
+    string nomeArquivo = "netflix_titles.csv";
+    string arquivoBinario = "netflix_titles.dat";
     //Registro registro;
-
+    
     Arquivo(nomeArquivo);
     //Inserir(nomeArquivo);
-    buscaBinaria(arquivoBinario);
+
+
+
+    cout<<"Digite show_id que deseja procurar (Ex: s2345): "<<endl;
+    cin>>chave;
+    buscaBinaria(arquivoBinario, chave);
 
     return 0;
 }
