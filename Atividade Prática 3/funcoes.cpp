@@ -123,53 +123,86 @@ void Arquivo(string nomeArquivo)
     output.close();
 }
 
-// void Inserir(string nomeArquivo)
-// {
-//     Registro registro;
-//     int reg = 0, cabecalho = 0;
-//     string newArquivo = nomeArquivo, id, line;
+void Inserir(string nomeArquivo)
+{
+    long int fim;
+    fstream arquivo;
+    Registro registro;
+    string type, title, country, release_year;
+    int size = 0;
+    int intId;
+    int tamShowId, tamType, tamTitle, tamCountry, tamReleaseYear;
+    tamShowId = 0;
+    tamType = 0;
+    tamTitle = 0;
+    tamCountry = 0;
+    tamReleaseYear = 0;
+    string id;
+    arquivo.open(nomeArquivo, ios::out | ios::in | ios::binary);
+    arquivo.seekg(0, ios::end);
+    long int tamanhoArquivo = arquivo.tellg();
 
-//     newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
-//     ofstream output(newArquivo, ios::app);
+    int aux = (sizeof(int) * 5) + (sizeof(Registro));
+    fim = (tamanhoArquivo / aux) - 1;
 
-//     // Leitura do Teclado
-//     cin >> registro.type;
-//     cin >> registro.title;
-//     cin >> registro.country;
-//     cin >> registro.release_year;
+    arquivo.seekg(fim * aux, ios::beg);
+    arquivo.read((char *)&tamShowId, sizeof(int));
+    arquivo.read((char *)&tamType, sizeof(int));
+    arquivo.read((char *)&tamTitle, sizeof(int));
+    arquivo.read((char *)&tamCountry, sizeof(int));
+    arquivo.read((char *)&tamReleaseYear, sizeof(int));
+    arquivo.read((char *)&registro, sizeof(Registro));
 
-//     if (output.is_open())
-//     {
-//         ifstream input(nomeArquivo);
+    id.append(registro.show_id, 1, tamShowId);
 
-//         while (!input.eof())
-//         {
-//             getline(input, line);
+    stringstream ss;
+    ss << id;
+    ss >> intId;
 
-//             if (cabecalho == 1)
-//             {
-//                 if (line != "")
-//                 {
-//                     reg++;
-//                 }
-//             }
-//             else
-//             {
-//                 cabecalho = 1;
-//             }
-//         }
+    // intId = atoi(id);
+    id.clear();
+    id = "s" + to_string(intId + 1);
 
-//         id = "s" + to_string(reg + 1);
+    // Leitura do Teclado
+    getchar();
+    cout << endl;
+    cout << "Type: ";
+    getline(cin, type);
+    cout << "Title: ";
+    getline(cin, title);
+    cout << "Country: ";
+    getline(cin, country);
+    cout << "Release year: ";
+    getline(cin, release_year);
 
-//         strcpy(registro.show_id, id.c_str());
+    cout << "Show_Id: " << id << endl;
+    cout << endl;
 
-//         cout << registro.show_id;
+    strcpy(registro.show_id, id.c_str());
+    strcpy(registro.type, type.c_str());
+    strcpy(registro.title, title.c_str());
+    strcpy(registro.country, country.c_str());
+    strcpy(registro.release_year, release_year.c_str());
 
-//         output.write(reinterpret_cast<char *>(&registro), sizeof(struct Registro));
+    size = id.size();
+    arquivo.write((char *)&size, sizeof(int));
 
-//         output.close();
-//     }
-// }
+    size = type.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = title.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = country.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = release_year.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    arquivo.write((char *)&registro, sizeof(Registro));
+
+    arquivo.close();
+}
 
 void buscaBinaria(string arquivoBinario, string chave)
 {
@@ -233,12 +266,14 @@ void buscaBinaria(string arquivoBinario, string chave)
             country.append(registro.country, 0, tamCountry);
             releaseYear.append(registro.release_year, 0, tamReleaseYear);
 
+            cout << endl;
             cout << "---> REGISTRO ENCONTRADO: " << endl;
             cout << "---> Show_Id: " << showId << endl;
             cout << "---> Type: " << type << endl;
             cout << "---> Title: " << title << endl;
             cout << "---> Contry: " << country << endl;
             cout << "---> Release Year: " << releaseYear << endl;
+            cout << endl;
             break;
         }
 

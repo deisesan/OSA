@@ -7,5 +7,7 @@ using namespace std;
 #include <fstream>
 #include <string>
 #include <string.h>
+#include <cstdlib>
+#include <sstream>
 
 #endif
