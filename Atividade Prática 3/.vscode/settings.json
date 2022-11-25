@@ -1,6 +1,7 @@
 {
   "files.associations": {
     "*.s": "gas",
-    "ostream": "cpp"
+    "ostream": "cpp",
+    "fstream": "cpp"
   }
 }

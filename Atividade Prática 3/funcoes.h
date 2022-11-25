@@ -8,5 +8,6 @@ using namespace std;
 
 void Arquivo(string nomeArquivo);
 void Inserir(string nomeArquivo);
-void buscaBinaria(string arquivoBinario, string chave);
+void BuscaBinaria(string arquivoBinario, string chave);
+
 #endif

@@ -13,12 +13,12 @@ int main()
     do
     {
 
-        cout << "->Deseja inserir novo registro (Digite 1)."<< endl
-             << "->Realizar pesquisa de registro (Digite 2)."<< endl
-             << "-> Sair (Digite 0)."<< endl;
-        cout<<"Opcao: ";     
+        cout << "->Deseja inserir novo registro (Digite 1)." << endl
+             << "->Realizar pesquisa de registro (Digite 2)." << endl
+             << "-> Sair (Digite 0)." << endl;
+        cout << "Opcao: ";
         cin >> opcao;
-        cout<<endl;
+        cout << endl;
 
         if (opcao == 1)
         {
@@ -29,7 +29,7 @@ int main()
 
             cout << "Digite show_id que deseja procurar (Ex: s2345): " << endl;
             cin >> chave;
-            buscaBinaria(arquivoBinario, chave);
+            BuscaBinaria(arquivoBinario, chave);
         }
 
     } while (opcao != 0);

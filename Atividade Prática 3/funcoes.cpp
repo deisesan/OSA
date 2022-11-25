@@ -204,7 +204,7 @@ void Inserir(string nomeArquivo)
     arquivo.close();
 }
 
-void buscaBinaria(string arquivoBinario, string chave)
+void BuscaBinaria(string arquivoBinario, string chave)
 {
     bool find = false;
     long int inicio = 0, meio, fim;
