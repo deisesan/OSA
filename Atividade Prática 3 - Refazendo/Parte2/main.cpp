@@ -9,6 +9,7 @@ int main()
     Buffer buff;
 
     Arquivo(nomeArquivo, buff);
+    IndexarExcluidos(arquivoBinario);
     int opcao;
 
     do

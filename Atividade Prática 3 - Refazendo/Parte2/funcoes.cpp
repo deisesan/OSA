@@ -3,7 +3,7 @@
 void Arquivo(string nomeArquivo, Buffer &buff)
 {
     Registro registro;
-    int cabecalho = 0, i = 0, j = 0, deleted = 0;
+    int cabecalho = 0, i = 0, j = 0, deleted = 1;
     string newArquivo = nomeArquivo, line, maxCountry = "";
     ofstream output;
 
@@ -121,8 +121,9 @@ void Arquivo(string nomeArquivo, Buffer &buff)
 void Inserir(string nomeArquivo, Buffer &buff)
 {
     fstream arquivo;
+    ifstream input;
     Registro registro;
-    int newShowId, deleted = 0;
+    int newShowId, size, tam, pos, deleted = 0, found = 0;
     string id, show_id, type, title, country, release_year;
     stringstream ss;
 
@@ -156,10 +157,91 @@ void Inserir(string nomeArquivo, Buffer &buff)
     strcpy(registro.country, country.c_str());
     strcpy(registro.release_year, release_year.c_str());
 
-    arquivo.write((char *)&deleted, sizeof(int));
+    input.open("netflix_excluidos.dat", ios::binary);
 
+    input.seekg(0, ios::end);
+    size = input.tellg();
+
+    arquivo.write((char *)&deleted, sizeof(int));
     registro.Pack(buff);
-    buff.Write(arquivo);
+
+    if (size == 0)
+    {
+        buff.Write(arquivo);
+    }
+    else
+    {
+        input.seekg(0, ios::beg);
+
+        while (!input.eof())
+        {
+            // Tamanho - Posição
+            input.read((char *)&tam, sizeof(int));
+            input.read((char *)&pos, sizeof(int));
+            cout << "pos" << pos << endl;
+
+            // if (buff.Size() <= tam)
+            // {
+            //     cout << "eeeeeeeeeeeeeeeeeeeeee pode ser" << endl;
+            //     cout << "buff.Size()" << buff.Size() << endl;
+            //     arquivo.seekg(pos, ios::beg);
+
+            //     buff.Write(arquivo);
+
+            //     found = 1;
+            //     break;
+            // }
+        }
+
+        if (found == 0)
+        {
+            buff.Write(arquivo);
+        }
+    }
 
     arquivo.close();
+}
+
+void IndexarExcluidos(string nomeArquivo)
+{
+
+    Buffer buffaux;
+    Registro registro;
+    ifstream input(nomeArquivo);
+    ofstream output;
+    int deleted;
+    long int pos = 0;
+
+    output.open("netflix_excluidos.dat", ios::out | ios::binary);
+
+    if (output.is_open())
+    {
+        buffaux.Clear();
+
+        while (!input.eof())
+        {
+            input.read((char *)&deleted, sizeof(int));
+
+            buffaux.Read(input);
+
+            if (registro.UnPack(buffaux))
+            {
+                if (deleted == 1)
+                {
+                    int tam = buffaux.Size();
+
+                    // Tamanho - Posição
+                    output.write((char *)&tam, sizeof(int));
+                    output.write((char *)&pos, sizeof(int));
+                }
+
+                pos += buffaux.Size();
+                pos += (sizeof(int) * 2);
+                output << endl;
+                buffaux.Clear();
+            }
+        }
+    }
+
+    output.close();
 }

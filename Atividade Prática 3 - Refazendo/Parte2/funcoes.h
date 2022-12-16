@@ -8,5 +8,6 @@ using namespace std;
 
 void Arquivo(string nomeArquivo, Buffer &buff);
 void Inserir(string nomeArquivo, Buffer &buff);
+void IndexarExcluidos(string nomeArquivo);
 
 #endif
