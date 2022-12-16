@@ -1,0 +1,19 @@
+{
+  "files.associations": {
+    "*.s": "gas",
+    "ostream": "cpp",
+    "fstream": "cpp",
+    "sstream": "cpp",
+    "iosfwd": "cpp",
+    "iostream": "cpp",
+    "string": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp",
+    "*.tcc": "cpp",
+    "functional": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
+}
