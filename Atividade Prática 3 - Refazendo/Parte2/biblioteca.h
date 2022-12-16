@@ -10,5 +10,6 @@ using namespace std;
 #include <cstdlib>
 #include <sstream>
 #include <assert.h>
+#include <cstdio>
 
 #endif

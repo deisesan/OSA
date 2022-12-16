@@ -181,7 +181,6 @@ void Inserir(string nomeArquivo, Buffer &buff)
             input.read((char *)&tam, sizeof(int));
             input.read((char *)&pos, sizeof(int));
 
-            buff.Print();
             int tamBuff = buff.Size();
 
             if (tamBuff == tam)
@@ -209,6 +208,9 @@ void Inserir(string nomeArquivo, Buffer &buff)
     arquivo.close();
     input.close();
     input_excluidos.close();
+
+    remove("netflix_excluidos.dat");
+    rename("netflix_excluidos_temp.dat", "netflix_excluidos.dat");
 }
 
 void IndexarExcluidos(string nomeArquivo)
