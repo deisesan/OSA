@@ -122,8 +122,9 @@ void Inserir(string nomeArquivo, Buffer &buff)
 {
     fstream arquivo;
     ifstream input;
+    ofstream input_excluidos;
     Registro registro;
-    int newShowId, size, tam, pos, deleted = 0, found = 0;
+    int newShowId, size, tam, pos = 0, deleted = 0, found = 0;
     string id, show_id, type, title, country, release_year;
     stringstream ss;
 
@@ -158,6 +159,7 @@ void Inserir(string nomeArquivo, Buffer &buff)
     strcpy(registro.release_year, release_year.c_str());
 
     input.open("netflix_excluidos.dat", ios::binary);
+    input_excluidos.open("netflix_excluidos_temp.dat", ios::out | ios::binary);
 
     input.seekg(0, ios::end);
     size = input.tellg();
@@ -178,19 +180,24 @@ void Inserir(string nomeArquivo, Buffer &buff)
             // Tamanho - Posição
             input.read((char *)&tam, sizeof(int));
             input.read((char *)&pos, sizeof(int));
-            cout << "pos" << pos << endl;
 
-            // if (buff.Size() <= tam)
-            // {
-            //     cout << "eeeeeeeeeeeeeeeeeeeeee pode ser" << endl;
-            //     cout << "buff.Size()" << buff.Size() << endl;
-            //     arquivo.seekg(pos, ios::beg);
+            buff.Print();
+            int tamBuff = buff.Size();
 
-            //     buff.Write(arquivo);
+            if (tamBuff == tam)
+            {
+                arquivo.seekg(pos, ios::beg);
 
-            //     found = 1;
-            //     break;
-            // }
+                buff.Write(arquivo);
+
+                found = 1;
+            }
+            else
+            {
+                // Tamanho - Posição
+                input_excluidos.write((char *)&tam, sizeof(int));
+                input_excluidos.write((char *)&pos, sizeof(int));
+            }
         }
 
         if (found == 0)
@@ -200,6 +207,8 @@ void Inserir(string nomeArquivo, Buffer &buff)
     }
 
     arquivo.close();
+    input.close();
+    input_excluidos.close();
 }
 
 void IndexarExcluidos(string nomeArquivo)
@@ -209,8 +218,7 @@ void IndexarExcluidos(string nomeArquivo)
     Registro registro;
     ifstream input(nomeArquivo);
     ofstream output;
-    int deleted;
-    long int pos = 0;
+    int deleted, pos = 0;
 
     output.open("netflix_excluidos.dat", ios::out | ios::binary);
 
@@ -237,11 +245,11 @@ void IndexarExcluidos(string nomeArquivo)
 
                 pos += buffaux.Size();
                 pos += (sizeof(int) * 2);
-                output << endl;
                 buffaux.Clear();
             }
         }
     }
 
     output.close();
+    input.close();
 }
