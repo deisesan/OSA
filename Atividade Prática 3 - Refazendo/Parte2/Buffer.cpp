@@ -70,6 +70,9 @@ bool Buffer::Read(istream &in)
 bool Buffer::Write(ostream &out) const
 // escreve os dados em uma arquivo binário
 {
+    int tam_aux = tam_dados;
+
+    out.write((char *)&tam_aux, sizeof(int));
     out.write(dados, tam_dados);
     return out.good();
 }
