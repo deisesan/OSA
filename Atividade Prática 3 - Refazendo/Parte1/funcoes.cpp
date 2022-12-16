@@ -32,9 +32,7 @@ void Arquivo(string nomeArquivo, Buffer &buff)
                         ++i;
                         ++j;
                     }
-                    output.write((char *)&j, sizeof(int));
                     ++i;
-
                     j = 0;
 
                     while (line[i] != ';')
@@ -43,7 +41,6 @@ void Arquivo(string nomeArquivo, Buffer &buff)
                         ++i;
                         ++j;
                     }
-                    output.write((char *)&j, sizeof(int));
                     ++i;
                     j = 0;
 
@@ -53,7 +50,6 @@ void Arquivo(string nomeArquivo, Buffer &buff)
                         ++i;
                         ++j;
                     }
-                    output.write((char *)&j, sizeof(int));
                     ++i;
                     j = 0;
 
@@ -79,7 +75,6 @@ void Arquivo(string nomeArquivo, Buffer &buff)
                         ++i;
                         ++j;
                     }
-                    output.write((char *)&j, sizeof(int));
                     ++i;
                     j = 0;
 
@@ -97,7 +92,6 @@ void Arquivo(string nomeArquivo, Buffer &buff)
                         ++i;
                         ++j;
                     }
-                    output.write((char *)&j, sizeof(int));
                     ++i;
                     j = 0;
 
@@ -128,7 +122,7 @@ void Inserir(string nomeArquivo, Buffer &buff)
 {
     fstream arquivo;
     Registro registro;
-    int newShowId, size, deleted = 0;
+    int newShowId, deleted = 0;
     string id, show_id, type, title, country, release_year;
     stringstream ss;
 
@@ -163,21 +157,6 @@ void Inserir(string nomeArquivo, Buffer &buff)
     strcpy(registro.release_year, release_year.c_str());
 
     arquivo.write((char *)&deleted, sizeof(int));
-
-    size = show_id.size();
-    arquivo.write((char *)&size, sizeof(int));
-
-    size = type.size();
-    arquivo.write((char *)&size, sizeof(int));
-
-    size = title.size();
-    arquivo.write((char *)&size, sizeof(int));
-
-    size = country.size();
-    arquivo.write((char *)&size, sizeof(int));
-
-    size = release_year.size();
-    arquivo.write((char *)&size, sizeof(int));
 
     registro.Pack(buff);
     buff.Write(arquivo);
