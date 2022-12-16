@@ -1,0 +1,18 @@
+{
+  "files.associations": {
+    "*.s": "gas",
+    "ostream": "cpp",
+    "fstream": "cpp",
+    "iostream": "cpp",
+    "xstring": "cpp",
+    "memory": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp",
+    "utility": "cpp",
+    "xmemory0": "cpp",
+    "xtr1common": "cpp",
+    "xutility": "cpp",
+    "iosfwd": "cpp",
+    "xiosbase": "cpp"
+  }
+}
