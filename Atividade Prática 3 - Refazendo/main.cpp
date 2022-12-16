@@ -15,8 +15,7 @@ int main()
     {
         cout << endl;
         cout << "-> Deseja inserir novo registro (Digite 1)." << endl
-             << "-> Realizar pesquisa de registro (Digite 2)." << endl
-             << "-> Deseja remover um registro (Digite 3)." << endl
+             << "-> Deseja remover um registro (Digite 2)." << endl
              << "-> Sair (Digite 0)." << endl;
         cout << "Opcao: ";
         cin >> opcao;
@@ -26,12 +25,6 @@ int main()
             Inserir(arquivoBinario, buff);
         }
         else if (opcao == 2)
-        {
-            cout << "Digite show_id que deseja procurar (Ex: s2345): " << endl;
-            cin >> chave;
-            BuscaBinaria(arquivoBinario, chave);
-        }
-        else if (opcao == 3)
         {
         }
 

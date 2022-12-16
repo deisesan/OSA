@@ -3,7 +3,7 @@
 void Arquivo(string nomeArquivo, Buffer &buff)
 {
     Registro registro;
-    int cabecalho = 0, i = 0, j = 0;
+    int cabecalho = 0, i = 0, j = 0, deleted = 0;
     string newArquivo = nomeArquivo, line, maxCountry = "";
     ofstream output;
 
@@ -24,6 +24,8 @@ void Arquivo(string nomeArquivo, Buffer &buff)
             {
                 if (line != "")
                 {
+                    output.write((char *)&deleted, sizeof(int));
+
                     while (line[i] != ';')
                     {
                         registro.show_id[j] = line[i];
@@ -126,7 +128,7 @@ void Inserir(string nomeArquivo, Buffer &buff)
 {
     fstream arquivo;
     Registro registro;
-    int newShowId, size;
+    int newShowId, size, deleted = 0;
     string id, show_id, type, title, country, release_year;
     stringstream ss;
 
@@ -160,6 +162,8 @@ void Inserir(string nomeArquivo, Buffer &buff)
     strcpy(registro.country, country.c_str());
     strcpy(registro.release_year, release_year.c_str());
 
+    arquivo.write((char *)&deleted, sizeof(int));
+
     size = show_id.size();
     arquivo.write((char *)&size, sizeof(int));
 
@@ -179,87 +183,4 @@ void Inserir(string nomeArquivo, Buffer &buff)
     buff.Write(arquivo);
 
     arquivo.close();
-}
-
-void BuscaBinaria(string arquivoBinario, string chave)
-{
-    bool find = false;
-    long int inicio = 0, meio, fim;
-    ifstream input;
-    Registro registro;
-    int tamShowId, tamType, tamTitle, tamCountry, tamReleaseYear, intId, intchave;
-    string id, str, showId, type, title, country, releaseYear;
-
-    input.open(arquivoBinario, ios::in | ios::binary);
-
-    input.seekg(0, ios::end);
-    long int tamanhoArquivo = input.tellg();
-
-    int aux = (sizeof(int) * 5) + (sizeof(Registro));
-    fim = (tamanhoArquivo / aux) - 1;
-
-    str.append(chave, 1, chave.size());
-    intchave = stoi(str);
-
-    while (inicio <= fim)
-    {
-        tamShowId = 0;
-        tamType = 0;
-        tamTitle = 0;
-        tamCountry = 0;
-        tamReleaseYear = 0;
-
-        meio = (fim + inicio) / 2;
-        input.seekg((meio * aux), ios::beg);
-        input.read((char *)&tamShowId, sizeof(int));
-        input.read((char *)&tamType, sizeof(int));
-        input.read((char *)&tamTitle, sizeof(int));
-        input.read((char *)&tamCountry, sizeof(int));
-        input.read((char *)&tamReleaseYear, sizeof(int));
-
-        input.read((char *)&registro, sizeof(Registro));
-
-        id.append(registro.show_id, 1, tamShowId);
-
-        intId = stoi(id);
-
-        if (intchave > intId)
-        {
-
-            inicio = meio + 1;
-        }
-        else if (intchave < intId)
-        {
-
-            fim = meio - 1;
-        }
-        else if (intchave == intId)
-        {
-            find = true;
-
-            showId.append(registro.show_id, 0, tamShowId);
-            type.append(registro.type, 0, tamType);
-            title.append(registro.title, 0, tamTitle);
-            country.append(registro.country, 0, tamCountry);
-            releaseYear.append(registro.release_year, 0, tamReleaseYear);
-
-            cout << endl;
-            cout << "---> REGISTRO ENCONTRADO: " << endl;
-            cout << "---> Show_Id: " << showId << endl;
-            cout << "---> Type: " << type << endl;
-            cout << "---> Title: " << title << endl;
-            cout << "---> Contry: " << country << endl;
-            cout << "---> Release Year: " << releaseYear << endl;
-            cout << endl;
-            break;
-        }
-
-        chave.clear();
-        id.clear();
-    }
-
-    if (find == false)
-    {
-        cout << "---> REGISTRO NAO ENCONTRADO: " << endl;
-    }
 }
