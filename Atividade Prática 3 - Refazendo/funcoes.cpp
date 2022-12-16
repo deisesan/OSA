@@ -1,192 +1,265 @@
-#include "netflix.h"
+#include "funcoes.h"
 
-#define TAM_SHOWID 6
-#define TAM_TYPE 10
-#define TAM_TITLE 105
-#define TAM_COUNTRY 125
-#define TAM_RELEASEYEAR 5
-
-void ConverterArquivo(string nomeArquivo)
+void Arquivo(string nomeArquivo, Buffer &buff)
 {
-  Netflix filme;
-  string line, newArquivo = nomeArquivo;
-  ofstream output;
-  char show_id[TAM_SHOWID];
-  char type[TAM_TYPE];
-  char title[TAM_TITLE];
-  char country[TAM_COUNTRY];
-  char release_year[TAM_RELEASEYEAR];
-  int i = 0, j = 0, cabecalho = 0;
+    Registro registro;
+    int cabecalho = 0, i = 0, j = 0;
+    string newArquivo = nomeArquivo, line, maxCountry = "";
+    ofstream output;
 
-  Buffer buff;
-  filme.InitBuffer(buff);
+    registro.InitBuffer(buff);
 
-  newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
-  output.open(newArquivo, ios::out | ios::binary);
+    newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
+    output.open(newArquivo, ios::out | ios::binary);
 
-  if (output.good())
-  {
-    ifstream input(nomeArquivo);
-
-    while (!input.eof())
+    if (output.is_open())
     {
-      getline(input, line);
+        ifstream input(nomeArquivo);
 
-      if (cabecalho == 1)
-      {
-        if (line != "")
+        while (!input.eof())
         {
-          // Leitura de show_id
-          while (line[i] != ';')
-          {
-            show_id[j] = line[i];
-            i++;
-            j++;
-          }
-          strcpy(filme.show_id, show_id);
-          i++;
-          j = 0;
+            getline(input, line);
 
-          // Leitura de type
-          while (line[i] != ';')
-          {
-            type[j] = line[i];
-            i++;
-            j++;
-          }
-          strcpy(filme.type, type);
-          i++;
-          j = 0;
+            if (cabecalho == 1)
+            {
+                if (line != "")
+                {
+                    while (line[i] != ';')
+                    {
+                        registro.show_id[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    output.write((char *)&j, sizeof(int));
+                    ++i;
 
-          // Leitura de title
-          while (line[i] != ';')
-          {
-            title[j] = line[i];
-            i++;
-            j++;
-          }
-          strcpy(filme.title, title);
-          i++;
-          j = 0;
+                    j = 0;
 
-          // Leitura de director
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        registro.type[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    output.write((char *)&j, sizeof(int));
+                    ++i;
+                    j = 0;
 
-          // Leitura de cast
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        registro.title[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    output.write((char *)&j, sizeof(int));
+                    ++i;
+                    j = 0;
 
-          // Leitura de country
-          while (line[i] != ';')
-          {
-            country[j] = line[i];
-            i++;
-            j++;
-          }
-          strcpy(filme.country, country);
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
 
-          // Leitura de date_added
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
 
-          // Leitura de release_year
-          while (line[i] != ';')
-          {
-            release_year[j] = line[i];
-            i++;
-            j++;
-          }
-          strcpy(filme.release_year, release_year);
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        registro.country[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    output.write((char *)&j, sizeof(int));
+                    ++i;
+                    j = 0;
 
-          // Leitura de rating
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        ++i;
+                        ++j;
+                    }
+                    ++i;
+                    j = 0;
 
-          // Leitura de duration
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    while (line[i] != ';')
+                    {
+                        registro.release_year[j] = line[i];
+                        ++i;
+                        ++j;
+                    }
+                    output.write((char *)&j, sizeof(int));
+                    ++i;
+                    j = 0;
 
-          // Leitura de listed_in
-          while (line[i] != ';')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    registro.Pack(buff);
+                    buff.Write(output);
 
-          // Leitura de description
-          while (line[i] != '\0')
-          {
-            i++;
-            j++;
-          }
-          i++;
-          j = 0;
+                    registro.show_id[0] = '\0';
+                    registro.type[0] = '\0';
+                    registro.title[0] = '\0';
+                    registro.country[0] = '\0';
+                    registro.release_year[0] = '\0';
+                }
+            }
+            else
+            {
+                cabecalho = 1;
+            }
 
-          filme.Print();
-
-          cout << "\nPacking Filme...\n";
-          filme.Pack(buff);
-          cout << "\nSituacao atual do Buffer:\n";
-          buff.Print();
-
-          buff.Write(output);
-
-          buff.Clear();
+            i = 0;
+            line.clear();
         }
-      }
-      else
-      {
-        cabecalho = 1;
-      }
-
-      i = 0;
-      j = 0;
-      show_id[0] = '\0';
-      type[0] = '\0';
-      title[0] = '\0';
-      country[0] = '\0';
-      release_year[0] = '\0';
     }
-  }
 
-  output.close();
+    output.close();
 }
 
-void Inserir(string nomeArquivo)
+void Inserir(string nomeArquivo, Buffer &buff)
 {
-  string newArquivo = nomeArquivo;
+    fstream arquivo;
+    Registro registro;
+    int newShowId, size;
+    string id, show_id, type, title, country, release_year;
+    stringstream ss;
 
-  newArquivo.replace(newArquivo.find(".csv"), 4, ".dat");
+    arquivo.open(nomeArquivo, ios::out | ios::in | ios::binary);
+    arquivo.seekg(0, ios::end);
+
+    registro.UnPack(buff);
+
+    id.append(registro.show_id, 1, (int)strlen(registro.show_id));
+    ss << id;
+    ss >> newShowId;
+
+    show_id.clear();
+    show_id = "s" + to_string(newShowId + 1);
+
+    // Leitura do Teclado
+    getchar();
+    cout << endl;
+    cout << "Type: ";
+    getline(cin, type);
+    cout << "Title: ";
+    getline(cin, title);
+    cout << "Country: ";
+    getline(cin, country);
+    cout << "Release year: ";
+    getline(cin, release_year);
+
+    strcpy(registro.show_id, show_id.c_str());
+    strcpy(registro.type, type.c_str());
+    strcpy(registro.title, title.c_str());
+    strcpy(registro.country, country.c_str());
+    strcpy(registro.release_year, release_year.c_str());
+
+    size = show_id.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = type.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = title.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = country.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    size = release_year.size();
+    arquivo.write((char *)&size, sizeof(int));
+
+    registro.Pack(buff);
+    buff.Write(arquivo);
+
+    arquivo.close();
+}
+
+void BuscaBinaria(string arquivoBinario, string chave)
+{
+    bool find = false;
+    long int inicio = 0, meio, fim;
+    ifstream input;
+    Registro registro;
+    int tamShowId, tamType, tamTitle, tamCountry, tamReleaseYear, intId, intchave;
+    string id, str, showId, type, title, country, releaseYear;
+
+    input.open(arquivoBinario, ios::in | ios::binary);
+
+    input.seekg(0, ios::end);
+    long int tamanhoArquivo = input.tellg();
+
+    int aux = (sizeof(int) * 5) + (sizeof(Registro));
+    fim = (tamanhoArquivo / aux) - 1;
+
+    str.append(chave, 1, chave.size());
+    intchave = stoi(str);
+
+    while (inicio <= fim)
+    {
+        tamShowId = 0;
+        tamType = 0;
+        tamTitle = 0;
+        tamCountry = 0;
+        tamReleaseYear = 0;
+
+        meio = (fim + inicio) / 2;
+        input.seekg((meio * aux), ios::beg);
+        input.read((char *)&tamShowId, sizeof(int));
+        input.read((char *)&tamType, sizeof(int));
+        input.read((char *)&tamTitle, sizeof(int));
+        input.read((char *)&tamCountry, sizeof(int));
+        input.read((char *)&tamReleaseYear, sizeof(int));
+
+        input.read((char *)&registro, sizeof(Registro));
+
+        id.append(registro.show_id, 1, tamShowId);
+
+        intId = stoi(id);
+
+        if (intchave > intId)
+        {
+
+            inicio = meio + 1;
+        }
+        else if (intchave < intId)
+        {
+
+            fim = meio - 1;
+        }
+        else if (intchave == intId)
+        {
+            find = true;
+
+            showId.append(registro.show_id, 0, tamShowId);
+            type.append(registro.type, 0, tamType);
+            title.append(registro.title, 0, tamTitle);
+            country.append(registro.country, 0, tamCountry);
+            releaseYear.append(registro.release_year, 0, tamReleaseYear);
+
+            cout << endl;
+            cout << "---> REGISTRO ENCONTRADO: " << endl;
+            cout << "---> Show_Id: " << showId << endl;
+            cout << "---> Type: " << type << endl;
+            cout << "---> Title: " << title << endl;
+            cout << "---> Contry: " << country << endl;
+            cout << "---> Release Year: " << releaseYear << endl;
+            cout << endl;
+            break;
+        }
+
+        chave.clear();
+        id.clear();
+    }
+
+    if (find == false)
+    {
+        cout << "---> REGISTRO NAO ENCONTRADO: " << endl;
+    }
 }

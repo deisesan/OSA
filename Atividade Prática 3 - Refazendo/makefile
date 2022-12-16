@@ -1,61 +1,34 @@
-# definindo as variáveis do projeto (MAIN é o nome do arquivo principal, que contem a função main, sem a extensao)
-MAIN 	:= main
-# objetos a serem gerados na compilação
-OBJECTS := main.o netflix.o buffer.o funcoes.o
-# (para C, pode-se usar o padrão ISO 2011 (c11) ou 2018 (c18), dependendo do seu compilador...
-# usar -std=c98 no lugar do c++11, c++17, c++20, etc.. 
+MAIN = main
+OBJECTS	= $(MAIN).o funcoes.o buffer.o registro.o
+FLAGS = -Wall -Wextra -std=c++17 -pedantic-errors
+MATH = -lm
+DEBUG = -g
+CC = g++
 
-FLAGS 	:= -Wall -Wextra -std=c++17 -pedantic-errors
-
-# habilitar a depuração
-DEBUG :=  -g
-
-# necessário apenas quando se incluir  a biblioteca <math.h> em algum arquivo fonte no projeto
-MATH 	:= -lm
-
-# definição do compilador: para C usar o gcc, por exemplo
-CC		:= g++
-
-# ajustando alguns parâmetros/comandos ao sistema operacional
-ifeq ($(OS), Windows_NT)
-OUTPUTMAIN := $(MAIN).exe
-RM	:= del /q /f
-else
-OUTPUTMAIN := $(MAIN).out
-RM	:= rm -f
-endif
-
-# ponto de compilação principal
 all: main.exe
-	@echo Compiling 'all' complete!
 
-# gerando o arquivo executavel
-main.exe: $(OBJECTS)  
-	$(CC) $(FLAGS) $(OBJECTS) -o $(OUTPUTMAIN) $(MATH)
+main.exe: $(OBJECTS)
+	$(CC) $(OBJECTS) -o $(MAIN).exe $(FLAGS)
 
-# gerando o arquivo objeto da função principal... adicionar as dependencias (se houverem)
-main.o: $(MAIN).cpp netflix.h buffer.h
-	$(CC) $(FLAGS) -c $(MAIN).cpp
+main.o: $(MAIN).cpp registro.h funcoes.h buffer.h
+	$(CC) -c $(MAIN).cpp -o $(MAIN).o $(FLAGS)
 
-# gerando o arquivo executavel
-netflix.o: netflix.cpp netflix.h buffer.h
-	$(CC) $(FLAGS) -c netflix.cpp
+registro.o: registro.cpp registro.h buffer.h
+	$(CC) -c registro.cpp -o registro.o $(FLAGS)
 
-# gerando o arquivo executavel
 funcoes.o: funcoes.cpp funcoes.h
-	$(CC) $(FLAGS) -c funcoes.cpp
-	
-# gerando o arquivo objeto da minha biblioteca 1 (myFunc1.o) que depende dos arquivos myFunc1.c, myFunc1.h
+	$(CC) -c funcoes.cpp -o funcoes.o $(FLAGS)
+
 buffer.o: buffer.cpp buffer.h
-	$(CC) $(FLAGS) -c buffer.cpp
+	$(CC) -c buffer.cpp -o buffer.o $(FLAGS)
 
 clean:
-	$(RM) $(OBJECTS)
-	$(RM) $(OUTPUTMAIN)
-	$(RM) *.dat
-	$(RM) *.exe
-	@echo Cleanup complete!!!
+	del /q /f $(OBJECTS)
+	del /q /f *.exe
+	del /q /f *.dat
 
 run: all
-	./$(OUTPUTMAIN)
-	@echo Executing 'all' complete!!!
+	./$(MAIN).exe
+
+exe: 
+	./$(MAIN).exe

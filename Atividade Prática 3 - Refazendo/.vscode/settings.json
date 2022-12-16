@@ -3,16 +3,17 @@
     "*.s": "gas",
     "ostream": "cpp",
     "fstream": "cpp",
-    "iostream": "cpp",
-    "xstring": "cpp",
-    "memory": "cpp",
-    "tuple": "cpp",
-    "type_traits": "cpp",
-    "utility": "cpp",
-    "xmemory0": "cpp",
-    "xtr1common": "cpp",
-    "xutility": "cpp",
+    "sstream": "cpp",
     "iosfwd": "cpp",
-    "xiosbase": "cpp"
-  }
+    "iostream": "cpp",
+    "string": "cpp",
+    "array": "cpp",
+    "initializer_list": "cpp",
+    "utility": "cpp",
+    "*.tcc": "cpp",
+    "functional": "cpp",
+    "tuple": "cpp",
+    "type_traits": "cpp"
+  },
+  "C_Cpp.errorSquiggles": "disabled"
 }

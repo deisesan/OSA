@@ -2,11 +2,12 @@
 #define FUNCOES_H
 
 #include "biblioteca.h"
-#include "buffer.h"
+#include "registro.h"
 
 using namespace std;
 
-void ConverterArquivo(string nomeArquivo);
-void Inserir(string nomeArquivo);
+void Arquivo(string nomeArquivo, Buffer &buff);
+void Inserir(string nomeArquivo, Buffer &buff);
+void BuscaBinaria(string arquivoBinario, string chave);
 
 #endif

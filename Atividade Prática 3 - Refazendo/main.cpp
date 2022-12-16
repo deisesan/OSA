@@ -1,28 +1,35 @@
+#include "biblioteca.h"
 #include "funcoes.h"
 
 int main()
 {
+    string chave;
     string nomeArquivo = "netflix_titles1.csv";
-    int opcao;
+    string arquivoBinario = "netflix_titles1.dat";
+    Buffer buff;
 
-    ConverterArquivo("netflix_titles1.csv");
+    Arquivo(nomeArquivo, buff);
+    int opcao;
 
     do
     {
+        cout << endl;
         cout << "-> Deseja inserir novo registro (Digite 1)." << endl
-             << "-> Deseja remover um registro (Digite 2)." << endl
-             << "-> Realizar pesquisa de registro (Digite 3)." << endl
+             << "-> Realizar pesquisa de registro (Digite 2)." << endl
+             << "-> Deseja remover um registro (Digite 3)." << endl
              << "-> Sair (Digite 0)." << endl;
         cout << "Opcao: ";
         cin >> opcao;
-        cout << endl;
 
         if (opcao == 1)
         {
-            Inserir(nomeArquivo);
+            Inserir(arquivoBinario, buff);
         }
         else if (opcao == 2)
         {
+            cout << "Digite show_id que deseja procurar (Ex: s2345): " << endl;
+            cin >> chave;
+            BuscaBinaria(arquivoBinario, chave);
         }
         else if (opcao == 3)
         {
