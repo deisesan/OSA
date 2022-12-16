@@ -15,7 +15,6 @@ int main()
     {
         cout << endl;
         cout << "-> Deseja inserir novo registro (Digite 1)." << endl
-             << "-> Deseja remover um registro (Digite 2)." << endl
              << "-> Sair (Digite 0)." << endl;
         cout << "Opcao: ";
         cin >> opcao;
@@ -23,9 +22,6 @@ int main()
         if (opcao == 1)
         {
             Inserir(arquivoBinario, buff);
-        }
-        else if (opcao == 2)
-        {
         }
 
     } while (opcao != 0);
